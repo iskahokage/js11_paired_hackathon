@@ -1,10 +1,11 @@
 import React from 'react';
-
+import './Header.css'
+import logo from '../../Assets/logo.png'
 const Header = () => {
     return (
         <header>
 		<div class="headerWrapper">
-			<h1>VELOSTORE</h1>
+            <div><img className="logo" src={logo} alt="" /></div>
 			<button class="burger" id="burger">
 				<div class="bar"></div>
 				<div class="bar"></div>
