@@ -6,10 +6,10 @@ const Header = () => {
         <header>
 		<div class="headerWrapper">
             <div><img className="logo" src={logo} alt="" /></div>
-			<button class="burger" id="burger">
+			{/* <button class="burger" id="burger">
 				<div class="bar"></div>
 				<div class="bar"></div>
-			</button>
+			</button> */}
 			<div class="topLinks">
 				<ul>
 					<li><a href="">Главная</a></li>
