@@ -1,5 +1,5 @@
 header{
-    background-color: #8FFFC9;
+    background-color: #97d4cc;
     margin-right: 10px;
   
   }
@@ -61,4 +61,17 @@ header{
   }
   .topLinks > ul> li > a:hover:after{
     opacity: 1;
+  }
+
+  input{
+  border: none;
+	
+	width: 300px;
+	height: 20px;
+	font-size: 1.0625rem;
+	padding-left: 0.875rem;
+	line-height: 147.6%;
+	padding-top: 0.825rem;
+	padding-bottom: 0.5rem;
+  outline: none;
   }

@@ -1,9 +1,15 @@
 import React from 'react';
+import Showreel from '../Showreel/Showreel';
+import ImageSlider from '../Slider/Slider';
+import { SliderData } from '../Slider/SliderData';
+
 
 const Home = () => {
     return (
         <div>
-            <p>isasd</p>
+            <Showreel />
+            <ImageSlider slides={SliderData}/>
+            
         </div>
     );
 };
