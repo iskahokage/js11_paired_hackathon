@@ -1,6 +1,6 @@
 import React from 'react';
-import './Header.css'
-import logo from '../../Assets/logo.png'
+// import './Header.css'
+import logo from '../../Assets/logoShowReel.svg'
 // import { IoMdCart, FaSearchengin } from 'react-icons/fa';
 
 const Header = () => {
