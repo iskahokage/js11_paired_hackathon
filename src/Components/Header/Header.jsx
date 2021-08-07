@@ -2,31 +2,34 @@ import React from 'react';
 // import './Header.css'
 import logo from '../../Assets/logoShowReel.svg'
 // import { IoMdCart, FaSearchengin } from 'react-icons/fa';
+import { Button, Container } from 'react-bootstrap';
 
 const Header = () => {
     return (
-        <header>
-		<div class="headerWrapper">
-            <div><img className="logo" src={logo} alt="" /></div>
-			{/* <button class="burger" id="burger">
-				<div class="bar"></div>
-				<div class="bar"></div>
-			</button> */}
-			<input placeholder="Введите что-нибудь для поиска"></input>
-			<div class="topLinks">
-				<ul>
-					{/* <li><FaSearchengin /></li> */}
-					<li><a href="">Каталог</a></li>
-					<li><a href="">Поиск</a></li>
-					<li><a href="">Личный Кабинет</a></li>
-					<li><a href="">Войти</a></li>
-					<li><a href="">Регистрация</a></li>
-					{/* <li><a href="">Hi<IoMdCart /></a></li> */}
-					
-				</ul>
-			</div>
-		</div>
-	</header>
+		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+		<Container>
+		<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+		<Na/Nav>
+		</Navbar.Collapse>
+		</Container>
+	  </Navbar>vbar.Toggle aria-controls="responsive-navbar-nav" />
+		<Navbar.Collapse id="responsive-navbar-nav">
+		  <Nav className="me-auto">
+			<Nav.Link href="#features">Features</Nav.Link>
+			<Nav.Link href="#pricing">Pricing</Nav.Link>
+			<NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+			  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+			  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+			  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+			  <NavDropdown.Divider />
+			  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+			</NavDropdown>
+		  </Nav>
+		  <Nav>
+			<Nav.Link href="#deets">More deets</Nav.Link>
+			<Nav.Link eventKey={2} href="#memes">
+			  Dank memes
+			</Nav.Link>
     );
 };
 
