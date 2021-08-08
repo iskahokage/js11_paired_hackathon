@@ -1,33 +1,52 @@
 import React from 'react';
-// import './Header.css'
-import logo from '../../Assets/logoShowReel.svg'
-// import { IoMdCart, FaSearchengin } from 'react-icons/fa';
+import './Header.css'
+import { Navbar, Container, Nav, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
+
 
 const Header = () => {
-    return (
-        <header>
-		<div class="headerWrapper">
-            <div><img className="logo" src={logo} alt="" /></div>
-			{/* <button class="burger" id="burger">
-				<div class="bar"></div>
-				<div class="bar"></div>
-			</button> */}
-			<input placeholder="Введите что-нибудь для поиска"></input>
-			<div class="topLinks">
-				<ul>
-					{/* <li><FaSearchengin /></li> */}
-					<li><a href="">Каталог</a></li>
-					<li><a href="">Поиск</a></li>
-					<li><a href="">Личный Кабинет</a></li>
-					<li><a href="">Войти</a></li>
-					<li><a href="">Регистрация</a></li>
-					{/* <li><a href="">Hi<IoMdCart /></a></li> */}
-					
-				</ul>
-			</div>
-		</div>
-	</header>
-    );
+	return (
+
+		<Navbar bg="dark" expand="lg" variant="dark">
+			<Container>
+				<Navbar.Brand href="#home" className="brand" style={{ fontSize: 35 }}>
+					VELOCITY
+				</Navbar.Brand>
+				<Navbar.Toggle aria-controls="navbarScroll" />
+				<Navbar.Collapse id="navbarScroll">
+					<Nav className="me-auto"></Nav>
+					<Form className="d-flex">
+						<FormControl
+							type="search"
+							placeholder="Введите для поиска"
+							className="mr-2"
+							aria-label="Search"
+						/>
+						<Button variant="outline-light" p="l-5">Поиск</Button>
+					</Form>
+					<Nav
+						className="mr-auto my-2 my-lg-0"
+						style={{ maxHeight: '100px' }}
+						navbarScroll
+					>
+						<Nav.Link href="#action1">Каталог</Nav.Link>
+						<Nav.Link href="#action2">Корзина</Nav.Link>
+						<NavDropdown title="Профиль" id="navbarScrollingDropdown">
+							<NavDropdown.Item href="#action3">Войти</NavDropdown.Item>
+							<NavDropdown.Item href="#action3">Зарегистрироваться</NavDropdown.Item>
+							<NavDropdown.Item href="#action4">Личный кабинет</NavDropdown.Item>
+							<NavDropdown.Divider />
+							<NavDropdown.Item href="#action5">Выйти</NavDropdown.Item>
+						</NavDropdown>
+
+					</Nav>
+
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
+
+	);
 };
 
 export default Header;
+
+

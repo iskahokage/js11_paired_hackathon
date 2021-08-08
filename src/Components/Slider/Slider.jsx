@@ -1,47 +1,52 @@
-import React, {useState} from 'react';
-import './Slider.css'
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
 import cube from '../../Assets/cube.jpg'
-import ElectraBikes from '../../Assets/ElectraBikes.jpg'
-import Forward from '../../Assets/Forward.png'
-import RPB from '../../Assets/RadPowerBikes.jpg'
-import { SliderData } from './SliderData';
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+import Electra from '../../Assets/Electra.jpg'
+import Forward from '../../Assets/Forward.jpg'
+import RPB from '../../Assets/RPB.jpg'
 
-const ImageSlider = ({ slides }) => {
-    
-    const [current, setCurrent] = useState(0);
-    const length = slides.length;
-  
-    const nextSlide = () => {
-      setCurrent(current === length - 1 ? 0 : current + 1);
-    };
-  
-    const prevSlide = () => {
-      setCurrent(current === 0 ? length - 1 : current - 1);
-    };
-  
-    if (!Array.isArray(slides) || slides.length <= 0) {
-      return null;
-    }
-  
-    return (
-      <section className='slider'>
-        <FaArrowAltCircleLeft   className='left-arrow' onClick={prevSlide} />
-        <FaArrowAltCircleRight  className='right-arrow' onClick={nextSlide} />
-        {SliderData.map((slide, index) => {
-          return (
-            <div
-              className={index === current ? 'slide active' : 'slide'}
-              key={index}
-            >
-              {index === current && (
-                <img src={slide.image} alt='travel image' className='image' />
-              )}
-            </div>
-          );
-        })}
-      </section>
-    );
-  };
-  
-  export default ImageSlider;
+const ImageSlider = () => {
+
+  return (
+    <Carousel>
+
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={cube}
+          alt="First slide"
+        />
+       
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={RPB}
+          alt="First slide"
+        />
+       
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={Electra}
+          alt="Second slide"
+        />
+
+        
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={Forward}
+          alt="Third slide"
+        />
+
+        
+      </Carousel.Item>
+    </Carousel>
+
+  );
+};
+
+export default ImageSlider;
