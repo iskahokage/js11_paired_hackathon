@@ -7,11 +7,10 @@
     height: 650px;
     display: flex;
     flex-direction: column;
-    padding: 3% 0;
     overflow: hidden;
     justify-content: center;
     align-items: center;
-    
+    z-index: -1;
 }
 
 .showText{
