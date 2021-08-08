@@ -1,19 +1,25 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from '../Components/Header/Header';
-import Home from '../Components/Home/Home';
-
-
+import AddProduct from '../Components/Admin/AddProduct';
+import EditProduct from '../Components/Admin/EditProduct';
+import AdminProvider from '../Contexts/AdminContext';
+import AdminPage from '../Components/Admin/AdminPage';
+import Home from '../Components/Home/Home'
 
 const Routes = () => {
     return (
-        <BrowserRouter>
-            <Header/>
-            
-            <Switch>
-                <Route exact path="/" component={Home} />
-            </Switch>
-        </BrowserRouter>
+        <div>
+            <BrowserRouter>
+                <AdminProvider>
+                    <Switch>
+                        <Route exact path = "/edit" component={EditProduct} />
+                        <Route exact path = "/add" component={AddProduct} />
+                        <Route exact path = "/admin" component={AdminPage} />
+                        <Route exact path = "/" component={Home} />
+                    </Switch>
+                </AdminProvider>
+            </BrowserRouter>
+        </div>
     );
 };
 

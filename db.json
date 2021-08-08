@@ -1,0 +1,18 @@
+{
+  "products": [
+    {
+      "brand": "0123",
+      "description": "852",
+      "price": "jkhkjhkjhjk98745632",
+      "image": "hjkh",
+      "id": 1
+    },
+    {
+      "brand": "23dawd",
+      "description": "wadsd",
+      "price": "d1ad",
+      "image": "trwaedwa",
+      "id": 2
+    }
+  ]
+}
