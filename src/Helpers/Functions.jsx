@@ -1,11 +1,7 @@
-import React from 'react';
+export const calcSubPrice = (product) => product.count * product.item.price;
 
-const Functions = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+export const calcTotalPrice = (products) => {
+  return products.reduce((ac, cur) => {
+    return (ac += cur.subPrice);
+  }, 0);
 };
-
-export default Functions;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css'
 import { Navbar, Container, Nav, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 
 const Header = () => {
@@ -31,7 +32,7 @@ const Header = () => {
 						navbarScroll
 					>
 						<Nav.Link href="/catalog">Каталог</Nav.Link>
-						<Nav.Link href="#action2">Корзина</Nav.Link>
+						<Nav.Link href="/cart">Корзина</Nav.Link>
 						<NavDropdown title="Профиль" id="navbarScrollingDropdown">
 							<NavDropdown.Item href="#action3">Войти</NavDropdown.Item>
 							<NavDropdown.Item href="#action3">Зарегистрироваться</NavDropdown.Item>

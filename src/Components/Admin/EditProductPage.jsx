@@ -38,7 +38,7 @@ const EditProductPage = () => {
                     </select>
                     <input name= "price" onChange={handleEditInput} value={newEditItem.price} type="text" />
                     <input name= "img" onChange={handleEditInput} value={newEditItem.image} type="text" />
-                    <Link to="/">
+                    <Link to="/catalog">
                      <button onClick={()=>saveProduct(newEditItem)}>Edit Product</button>
                     </Link>
                 </form>
