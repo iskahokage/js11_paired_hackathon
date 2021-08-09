@@ -9,7 +9,9 @@ const Header = () => {
 		<Navbar bg="dark" expand="lg" variant="dark">
 			<Container>
 				<Navbar.Brand href="#home" className="brand" style={{ fontSize: 35 }}>
-					VELOCITY
+					<Nav.Link href="/">
+						VELOCITY
+					</Nav.Link> 
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll">
@@ -28,7 +30,7 @@ const Header = () => {
 						style={{ maxHeight: '100px' }}
 						navbarScroll
 					>
-						<Nav.Link href="#action1">Каталог</Nav.Link>
+						<Nav.Link href="/catalog">Каталог</Nav.Link>
 						<Nav.Link href="#action2">Корзина</Nav.Link>
 						<NavDropdown title="Профиль" id="navbarScrollingDropdown">
 							<NavDropdown.Item href="#action3">Войти</NavDropdown.Item>
