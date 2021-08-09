@@ -26,7 +26,7 @@ const reducer = (state=INIT_STATE, action)=>{
 }
 
 
-const AdminProvider = ({children}) => {
+const AddProductContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, INIT_STATE)
 
     const getProductsData = async () =>{
@@ -70,4 +70,4 @@ const AdminProvider = ({children}) => {
     );
 };
 
-export default AdminProvider;
+export default AddProductContextProvider;
