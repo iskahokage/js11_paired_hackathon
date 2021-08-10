@@ -16,5 +16,21 @@
       "image": "https://www.velostrana.ru/upload/models/velo/49401/full/115db85755c66e1611233d4a5d8dc87d.jpg",
       "id": 3
     }
+  ],
+  "users": [
+    {
+      "firstName": "test",
+      "lastName": "test",
+      "email": "test@gmail.com",
+      "password": "123456",
+      "id": 1
+    },
+    {
+      "firstName": "admin",
+      "lastName": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "id": 2
+    }
   ]
 }

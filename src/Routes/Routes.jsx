@@ -7,6 +7,8 @@ import Header from '../Components/Header/Header';
 import Home from '../Components/Home/Home';
 import ProductList from '../Components/Home/ProductList';
 import ProductContextProvider from '../Contexts/ProductContext';
+import Login from '../Components/Auth/Login';
+import Registration from '../Components/Auth/Registration';
 
 
 
@@ -22,6 +24,8 @@ const Routes = () => {
                 <Route path="/edit" component={EditProductPage}/>
                 <Route path="/cart" component={Cart}/>
                 <Route exact path="/catalog" component={ProductList}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/registration" component={Registration}/>
             </Switch>
             </ProductContextProvider>
         </BrowserRouter>

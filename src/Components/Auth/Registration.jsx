@@ -1,35 +1,74 @@
-import React, { useContext, useState } from 'react';
-import { clientContext } from '../../Contexts/ClientContext';
+import { Container, Grid, TextField, Button, Typography, CircularProgress } from '@material-ui/core';
+import React, { useState } from 'react';
+import { useAuth } from './../../Contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
+import MuiAlert from '@material-ui/lab/Alert';
+import { useEffect } from 'react';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const Registration = () => {
-    const {registerUser} = useContext(clientContext)
-    const [NewUser, setNewUser] = useState({
-        email: "",
-        password: ""
-    })
-    const handleInput = (e) => {
-        let obj = {
-            ...NewUser,
-            [e.target.name]: e.target.value
-        }
-        setNewUser(obj)
+  const [newUser, setNewUser] = useState({});
+  const { registerUser, user, loading, errorMessage, success, clearState } = useAuth();
+  const history = useHistory();
+
+  const handleChange = (e) => {
+    let newObj = {
+      ...newUser,
+    };
+    newObj[e.target.name] = e.target.value;
+    setNewUser(newObj);
+  };
+
+  const signup = (e) => {
+    e.preventDefault();
+    try {
+      registerUser(newUser);
+    } catch (e) {
+      console.log(e);
     }
-    
-    const handleClick = () => {
-        registerUser(NewUser)
-        console.log(NewUser)
+  };
+
+  useEffect(() => {
+    if (success) {
+      history.push('/login');
     }
 
-    return (
-        <>
-        <h2> Welcome! You may SignUp here!</h2>
-        <div>
-            <input onChange={handleInput} name="email" type="text" />
-            <input onChange={handleInput} name="password" type="password" />
-            <button onClick={handleClick}>SignUn</button>
-        </div>
-        </>
-    );
+    return () => {
+      clearState();
+    };
+  }, [success]);
+
+  return (
+    <Container component="main" maxWidth="xs">
+      <form action="" onSubmit={signup}>
+        <Grid container>
+          <div>
+            <Typography component="h1" variant="h5">
+              Registration
+            </Typography>
+            {errorMessage ? <Alert severity="error">{errorMessage}</Alert> : null}
+          </div>
+          <Grid>
+            <TextField
+              onChange={(e) => handleChange(e)}
+              name="email"
+              variant="outlined"
+              required
+              label="Email Address"
+            />
+            <TextField onChange={(e) => handleChange(e)} name="password" variant="outlined" required label="Password" />
+            <TextField variant="outlined" required label="Password again" />
+          </Grid>
+          <Button variant="contained" color="primary" type="submit" disabled={loading}>
+            {loading ? <CircularProgress /> : 'Sign Up'}
+          </Button>
+        </Grid>
+      </form>
+    </Container>
+  );
 };
 
 export default Registration;
