@@ -11,6 +11,7 @@ import Registration from '../Components/Auth/Registration';
 import AuthContextProvider from '../Contexts/AuthContext';
 import Profile from '../Components/Profile/Profile';
 import Header from '../Components/Header/Header';
+import Footer from '../Components/Footer/Footer';
 
 
 const Routes = () => {
@@ -29,6 +30,7 @@ const Routes = () => {
                     <Route exact path="/auth" component={Authorization} />
                     <Route exact path="/profile" component={Profile} />
                 </Switch>
+                <Footer/>
         </BrowserRouter>
             </ProductContextProvider>
                 </AuthContextProvider>
