@@ -58,8 +58,8 @@ const Header = () => {
 									<NavDropdown.Item as={Link} to="/registration">
 										Зарегистрироваться
 									</NavDropdown.Item> */}
-									<NavDropdown.Item as={Link} to="/profile">
-										Личный кабинет
+									<NavDropdown.Item>
+										{userEmail}
 									</NavDropdown.Item>
 									<NavDropdown.Divider />
 									<NavDropdown.Item as={Link} onClick={logout1}>

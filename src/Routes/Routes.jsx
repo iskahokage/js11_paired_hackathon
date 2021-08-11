@@ -9,7 +9,6 @@ import ProductContextProvider from '../Contexts/ProductContext';
 import Authorization from '../Components/Auth/Login';
 import Registration from '../Components/Auth/Registration';
 import AuthContextProvider from '../Contexts/AuthContext';
-import Profile from '../Components/Profile/Profile';
 import Header from '../Components/Header/Header';
 
 
@@ -27,7 +26,7 @@ const Routes = () => {
                     <Route exact path="/catalog" component={ProductList}/>           
                     <Route exact path="/registration" component={Registration} />
                     <Route exact path="/auth" component={Authorization} />
-                    <Route exact path="/profile" component={Profile} />
+                    
                 </Switch>
         </BrowserRouter>
             </ProductContextProvider>
