@@ -84,12 +84,12 @@ const ProductCard = () => {
 
             
             <li className={classes.card}>
+                <img className="productImg" src={item.image} alt="" />         
                 <span key={item.id}>{item.brand}</span>
                 <span key={item.id}>{item.model}</span>
                 <span key={item.id}>{item.description}</span>              
                 <span key={item.id}>{item.category}</span> 
                 <span key={item.id}>{item.price}</span>
-                <img className="productImg" src={item.image} alt="" />         
                 <div>
                     <button className={classes.buyBtn}>
                         Buy <AttachMoneyIcon/>   
