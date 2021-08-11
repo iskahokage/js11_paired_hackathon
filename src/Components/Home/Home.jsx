@@ -11,7 +11,6 @@ const Home = () => {
         <div>
             <Showreel />
             <ImageSlider />
-            <Footer />
             
         </div>
     );

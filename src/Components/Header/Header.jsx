@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Header.css'
 import { Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { useContext } from 'react';
 import { authContext } from '../../Contexts/AuthContext';
 
@@ -14,6 +15,15 @@ const Header = () => {
     useEffect(() => {
         if (checkStatus) setState(true)
     }, [userEmail])
+=======
+
+const Header = () => {
+	const [state, setState] = useState(false)
+    let checkStatus = JSON.parse(localStorage.getItem("user"))
+    useEffect(() => {
+        if (checkStatus) setState(true)
+    }, [])
+>>>>>>> ce15c20ae7b23bf5d7713a05fe036d6f56e887a8
 
     function logout1() {
         localStorage.setItem("user", JSON.stringify(0))
