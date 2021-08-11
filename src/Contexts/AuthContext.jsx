@@ -7,7 +7,8 @@ export const authContext = React.createContext()
 
 const INIT_STATE = {
     users: [],
-    user: null
+    user: null,
+    userEmail: ''
 }
 
 const reducer = (state = INIT_STATE, action) => {
@@ -16,6 +17,7 @@ const reducer = (state = INIT_STATE, action) => {
             return { ...state, users: action.payload }
         case "GET_USER_DATA":
             return { ...state, user: action.payload}
+        case "SUCCESS_LOGIN": return {...state, userEmail: action.payload}
         default:
             return {...state}
     }
@@ -41,6 +43,10 @@ const AuthContextProvider = ({ children }) => {
     const authUser = async (id, history) => {
         const { data } = await axios(`${AUTH_API}/users/${id}`)
         localStorage.setItem("user", JSON.stringify(data.id))
+        dispatch({
+            type: "SUCCESS_LOGIN",
+            payload: data.login
+        })
         history.push('/')
     }
 
@@ -60,6 +66,7 @@ const AuthContextProvider = ({ children }) => {
             getUserData,
             registrNewUser,
             authUser,
+            userEmail: state.userEmail
         }}>
             {children}
         </authContext.Provider>
