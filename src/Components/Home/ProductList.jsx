@@ -11,21 +11,14 @@ import { NavLink } from 'react-router-dom';
 import ProductCard from './ProductCard';
 
 const useStyles = makeStyles(() => ({
-    buyBtn:{
-        backgroundColor: "white",
-        border: "solid #0D6EFD 2px",
-        '&:hover': {
-            backgroundColor: "#0D6EFD",
-            color: "white"
-        },
+    
+    title:{
+        textAlign: "center"
     },
-    addToCartBtn:{
-        backgroundColor: "white",
-        border: "solid #FF2800 2px",
-        '&:hover': {
-            backgroundColor: "#FF2800",
-            color: "white"
-        },
+    paper:{
+        maxWidth: "1200px",
+        margin: "0 auto",
+        padding: "10px",
     }
   }));
 
@@ -41,7 +34,12 @@ const ProductList = () => {
       }
    
     return (
-        <ProductCard/>
+        <>
+            <h1 className={classes.title}>Каталог Байков</h1>
+            <Paper className={classes.paper}>
+                <ProductCard/>
+            </Paper>
+        </>
     );
 };
 
