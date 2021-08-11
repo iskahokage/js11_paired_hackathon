@@ -33,7 +33,6 @@ const ProductList = () => {
    
     return (
         <>
-            <Header />
             <h1 className={classes.title}>Каталог Байков</h1>
             <Paper className={classes.paper}>
                 <ProductCard/>

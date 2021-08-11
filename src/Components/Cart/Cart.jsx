@@ -42,7 +42,6 @@ export default function Cart() {
 
   return (
     <>
-      <Header />
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="caption table">
           <TableHead>

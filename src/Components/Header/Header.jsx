@@ -2,13 +2,18 @@ import React, {useState, useEffect} from 'react';
 import './Header.css'
 import { Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { authContext } from '../../Contexts/AuthContext';
 
 const Header = () => {
+	const {userEmail, user} = useContext(authContext);
 	const [state, setState] = useState(false)
-    let checkStatus = JSON.parse(localStorage.getItem("user"))
+	let checkStatus = JSON.parse(localStorage.getItem("user"))
+	console.log(userEmail);
+	
     useEffect(() => {
         if (checkStatus) setState(true)
-    }, [])
+    }, [userEmail])
 
     function logout1() {
         localStorage.setItem("user", JSON.stringify(0))
@@ -53,8 +58,8 @@ const Header = () => {
 									<NavDropdown.Item as={Link} to="/registration">
 										Зарегистрироваться
 									</NavDropdown.Item> */}
-									<NavDropdown.Item as={Link} to="/profile">
-										Личный кабинет
+									<NavDropdown.Item>
+										{userEmail}
 									</NavDropdown.Item>
 									<NavDropdown.Divider />
 									<NavDropdown.Item as={Link} onClick={logout1}>
