@@ -1,0 +1,77 @@
+.register-page{
+    /* background: url(../../img/backForRegister.png); */
+    height: 600px;
+    background-size: contain;
+    
+  }
+  
+  .register-block{
+    display: flex;
+    justify-content: center;
+    /* margin-top: 100px;
+    margin-bottom: 100px; */
+  }
+  
+  .register-block-only{
+    padding: 80px;
+    padding-top: 40px;
+    margin: 150px 0;
+    background-color: gainsboro;
+    
+    /* opacity: 0.9; */
+  }
+  
+  .register-title{
+    font-size: 30px;
+	transition-duration: 1s;
+	transition-timing-function: ease-in-put;
+    
+    
+  }
+  
+  .register-input{
+    display: block;
+    appearance: none;
+    outline: 0;
+		border: 1px solid fade(white, 40%);
+		background-color: fade(white, 20%);
+		width: 250px;
+        border-radius: 3px;
+        padding: 15px 15px;
+    border-style: none;
+    transition-duration: 0.25s;
+		font-weight: 300;
+  }
+  
+  .label-register{
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+  
+  .btn-register{
+    margin-top: 10px;
+    appearance: none;
+		outline: 0;
+		background-color: white;
+		border: 0;
+		padding: 10px 15px;
+		color: #53e3a6;
+		border-radius: 3px;
+		width: 250px;
+		cursor: pointer;
+		font-size: 18px;
+		transition-duration: 0.25s;
+  
+  }
+  
+  .btn-register:hover{
+    background-color: #000000;
+  }
+  
+  .btn-register:active{
+    background-color: #000000;
+  }
+  
+  .btn-register:focus{
+    background-color: #000000;
+  }

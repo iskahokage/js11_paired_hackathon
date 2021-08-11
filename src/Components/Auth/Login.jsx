@@ -1,74 +1,72 @@
-import { Container, Grid, Typography, TextField, Button, CircularProgress } from '@material-ui/core';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from './../../Contexts/AuthContext';
-import MuiAlert from '@material-ui/lab/Alert';
+import React, { useContext, useEffect, useState } from 'react';
+import { Button} from 'react-bootstrap';
+import { authContext } from '../../Contexts/AuthContext';
+import Header from '../Header/Header';
+import './Login.css'
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+const Authorization = (props) => {
+    const { users, authUser, getUsersData } = useContext(authContext)
+    const [user, setUser] = useState({})
 
-const Login = () => {
-  const [newUser, setNewUser] = useState({});
-  const history = useHistory();
-  const { loginUser, user, loading, errorMessage, clearState } = useAuth();
+    useEffect(() => {
+        getUsersData()
+    }, [])
 
-  const handleChange = (e) => {
-    let newObj = {
-      ...newUser,
-    };
-    newObj[e.target.name] = e.target.value;
-    setNewUser(newObj);
-  };
-
-  const signin = (e) => {
-    e.preventDefault();
-    try {
-      loginUser(newUser);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    if (user) {
-      history.push('/');
+    function handleChange(e) {
+        let obj = {
+            ...user,
+            [e.target.name]: e.target.value
+        }
+        setUser(obj)
     }
 
-    return () => {
-      clearState();
-    };
-  }, [user]);
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <form action="" onSubmit={signin}>
-        <Grid container>
-          <div>
-            <Typography component="h1" variant="h5">
-              Login
-            </Typography>
-            {errorMessage ? <Alert severity="error">{errorMessage}</Alert> : null}
-          </div>
-          <Grid>
-            <TextField
-              onChange={(e) => handleChange(e)}
-              name="email"
-              variant="outlined"
-              required
-              label="Email Address"
-            />
-            <TextField onChange={(e) => handleChange(e)} name="password" variant="outlined" required label="Password" />
-            <TextField variant="outlined" required label="Password again" />
-          </Grid>
-          <Button variant="contained" color="primary" type="submit" disabled={loading}>
-            {loading ? <CircularProgress /> : 'Login'}
-          </Button>
-        </Grid>
-      </form>
-    </Container>
-  );
+    function handleClick() {
+        let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        let regexp2 = new RegExp(/(?=.{8,})/)
+        let result = regexp.test(user.login)
+        let result2 = regexp2.test(user.password)
+        if (result2 && result) {
+            let newArr = users.filter(item => (
+                item.login === user.login && item.password === user.password
+            ))
+            newArr.length ? authUser(newArr[0].id, props.history) : alert("Не правильный пароль или почта")
+        }
+        if (!result && !result2) {
+            return alert("Введите корректную почту и пароль должен быть больше восьми символов")
+        }
+        if (!result) {
+            return alert("Введите корректную почту")
+        }
+        if (!result2) {
+            return alert("Пароль должен быть больше восьми символов")
+        }
+    }
+
+
+    return (
+        <>
+          <Header />
+            <div className="register-page">
+                <div className="register-block">
+                    <div className="register-block-only">
+                        <p className="register-title">Авторизация</p>
+                        <div>
+                            <p className="label-register">Email</p>
+                            <input className="register-input" placeholder="Введите ваш email" required type="email" name="login" onChange={handleChange} />
+                        </div>
+                        <div>
+                            <p className="label-register">Пароль</p>
+                            <input className="register-input" placeholder="Введите пароль" required type="password" name="password" onChange={handleChange} />
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: "center" }}>
+                            <Button className="btn-register" size="lg" onClick={handleClick}>Войти</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 };
 
-export default Login;
+export default Authorization;
