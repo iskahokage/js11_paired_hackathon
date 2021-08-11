@@ -1,15 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import './Header.css'
 import { Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { authContext } from '../../Contexts/AuthContext';
+import { addProductContext} from "../../Contexts/ProductContext"
+
 
 const Header = () => {
+	const history = useHistory()
+	const {getProductsInCart, getProducts} = useContext(addProductContext)
 	const {userEmail, user} = useContext(authContext);
 	const [state, setState] = useState(false)
 	let checkStatus = JSON.parse(localStorage.getItem("user"))
 	console.log(userEmail);
+	
 	
     useEffect(() => {
         if (checkStatus) setState(true)
@@ -25,7 +30,7 @@ const Header = () => {
 	<>
 		<Navbar bg="dark" expand="lg" variant="dark">
 			<Container>
-				<Navbar.Brand href="#home" variant="light" className="brand" style={{ fontSize: 35 }}>
+				<Navbar.Brand href="#home"  className="brand" style={{ fontSize: 35 }}>
 					<Nav><Link to="/" className="nav-link" role="button">
 						VELOCITY
 					</Link></Nav> 
