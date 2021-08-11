@@ -1,20 +1,21 @@
 {
   "bikes": [
     {
-      "title": "SpeedX TopSpeed 4",
+      "brand": "SpeedX TopSpeed 4",
       "description": "Fast and Furios",
-      "price": "35000",
+      "price": "3500",
       "category": "urban",
       "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.1_JGnCZnQqpWBIFDRMXHQgHaHa%26pid%3DApi&f=1",
       "id": 1
     },
     {
-      "title": "Cube",
-      "description": "800$",
-      "price": "Pro 18",
-      "category": "Touring",
-      "image": "https://www.velostrana.ru/upload/models/velo/49401/full/115db85755c66e1611233d4a5d8dc87d.jpg",
-      "id": 3
+      "brand": "Cube",
+      "model": "Pro 18",
+      "description": "MTB BIKE ",
+      "price": "1500$",
+      "category": "MTB",
+      "image": "sdfsdf",
+      "id": 2
     }
   ]
 }
