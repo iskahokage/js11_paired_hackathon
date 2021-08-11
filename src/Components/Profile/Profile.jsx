@@ -18,7 +18,6 @@ const Profile = () => {
         <>
             {user ?
                 (<>
-                    <Header />
                     <Card style={{ width: '18rem' }}>
                         <Card.Body>
                             <Card.Title>Ваш профиль</Card.Title>

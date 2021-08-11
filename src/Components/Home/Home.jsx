@@ -9,10 +9,8 @@ const Home = () => {
 
     return (
         <div>
-            <Header />
             <Showreel />
             <ImageSlider />
-            <Footer />
             
         </div>
     );

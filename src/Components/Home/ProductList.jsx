@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import Header from '../Header/Header'
+import { Paper } from '@material-ui/core';
 
 
 const useStyles = makeStyles(() => ({

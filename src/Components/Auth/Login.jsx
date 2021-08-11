@@ -46,7 +46,6 @@ const Authorization = (props) => {
 
     return (
         <>
-          <Header />
             <div className="register-page">
                 <div className="register-block">
                     <div className="register-block-only">

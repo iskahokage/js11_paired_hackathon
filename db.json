@@ -16,6 +16,24 @@
       "category": "MTB",
       "image": "sdfsdf",
       "id": 2
+    },
+    {
+      "brand": "saf",
+      "model": "k;lk;l",
+      "description": ";kl;k;lk",
+      "price": "lkl;kl",
+      "category": "MTB",
+      "image": "l;klkl;kl;",
+      "id": 3
+    },
+    {
+      "brand": "lkmklj",
+      "model": "lkjkljkl",
+      "description": "jkljkljklj",
+      "price": "kjljk",
+      "category": "MTB",
+      "image": "",
+      "id": 4
     }
   ],
   "users": [
