@@ -8,9 +8,25 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(() => ({
-    buyBtn:{
+    card: {
+      listStyle: "none",
+      display: "flex",
+      flexDirection: "column",
+      alignItems:"center",
+      justifyContent: "space-between",
+      maxWidth: "300px",
+      height: "400px",  
+    },
+    buyBtn: {
         backgroundColor: "white",
         border: "solid #0D6EFD 2px",
         '&:hover': {
@@ -25,7 +41,23 @@ const useStyles = makeStyles(() => ({
             backgroundColor: "#FF2800",
             color: "white"
         },
-    }
+    },
+    buyBtn:{
+      backgroundColor: "white",
+      border: "solid #0D6EFD 2px",
+      '&:hover': {
+          backgroundColor: "#0D6EFD",
+          color: "white"
+      },
+    },
+    addToCartBtn:{
+      backgroundColor: "white",
+      border: "solid #FF2800 2px",
+      '&:hover': {
+          backgroundColor: "#FF2800",
+          color: "white"
+    },
+  },
   }));
 
 
@@ -46,16 +78,18 @@ const ProductCard = () => {
 
 
     return (
-        <Paper className="paper" elevation={3}>
           <div className="container">
-          <h1>Our Bikes xCatalog</h1>
           {products.map(item => (
-            <li className="card">
-                <span key={item.id}>{item.title}</span>
+            <Paper elevation={3}>
+
+            
+            <li className={classes.card}>
+                <img className="productImg" src={item.image} alt="" />         
+                <span key={item.id}>{item.brand}</span>
+                <span key={item.id}>{item.model}</span>
                 <span key={item.id}>{item.description}</span>              
                 <span key={item.id}>{item.category}</span> 
                 <span key={item.id}>{item.price}</span>
-                <img className="productImg" src={item.image} alt="" />         
                 <div>
                     <button className={classes.buyBtn}>
                         Buy <AttachMoneyIcon/>   
@@ -72,9 +106,10 @@ const ProductCard = () => {
                         <button onClick={()=>editProduct(item.id)}>Edit Product<EditIcon/></button>
                     </NavLink> </div>
             </li>
+            </Paper>
+            
           ))}
           </div>
-        </Paper>
     );
 };
 

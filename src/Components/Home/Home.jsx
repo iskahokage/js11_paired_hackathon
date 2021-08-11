@@ -13,7 +13,6 @@ const Home = () => {
             <Showreel />
             <ImageSlider />
             <Footer />
-            
         </div>
     );
 };
