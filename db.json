@@ -17,5 +17,21 @@
       "image": "sdfsdf",
       "id": 2
     }
+  ],
+  "users": [
+    {
+      "firstName": "test",
+      "lastName": "test",
+      "email": "test@gmail.com",
+      "password": "123456",
+      "id": 1
+    },
+    {
+      "firstName": "admin",
+      "lastName": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "id": 2
+    }
   ]
 }
