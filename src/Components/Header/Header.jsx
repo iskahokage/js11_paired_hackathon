@@ -1,16 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import './Header.css'
-import { Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
+import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { authContext } from '../../Contexts/AuthContext';
+import { addProductContext } from '../../Contexts/ProductContext';
 
 const Header = () => {
 	const {userEmail, user} = useContext(authContext);
+	const {history, getProducts} = useContext(addProductContext)
 	const [state, setState] = useState(false)
 	let checkStatus = JSON.parse(localStorage.getItem("user"))
 	console.log(userEmail);
 	
+	const handleValue = (e) => {
+		const search = new URLSearchParams(history.location.search);
+		search.set('q', e.target.value);
+		history.push(`${history.location.pathname}?${search.toString()}`);
+		getProducts();
+	  };
+
     useEffect(() => {
         if (checkStatus) setState(true)
     }, [userEmail])
@@ -33,15 +42,16 @@ const Header = () => {
 				<Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll">
 					<Nav className="me-auto"></Nav>
-					{/* <Form className="d-flex">
+					<Form className="d-flex">
 						<FormControl
 							type="search"
 							placeholder="Введите для поиска"
 							className="mr-2"
 							aria-label="Search"
+							onChange={(e) => handleValue(e)}
 						/>
 						<Button variant="outline-light" p="l-5">Поиск</Button>
-					</Form> */}
+					</Form>
 					<Nav
 						className="mr-auto my-2 my-lg-0"
 						style={{ maxHeight: '100px' }}

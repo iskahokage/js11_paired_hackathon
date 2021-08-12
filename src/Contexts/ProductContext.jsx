@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { createContext, useContext } from 'react';
 import { useReducer } from 'react';
+import { useHistory } from 'react-router-dom';
 import { JSON_API } from '../Helpers/Consts';
 import { calcSubPrice, calcTotalPrice } from '../Helpers/Functions';
 
@@ -42,9 +43,12 @@ const reducer = (state=INIT_STATE, action) =>{
 const ProductContextProvider = ({children}) => {
 
     const [state, dispatch] = useReducer(reducer, INIT_STATE)
-
+    const history = useHistory();
     const getProducts = async () =>{
-        let {data} = await axios(JSON_API)
+      console.log(history)
+        const search = new URLSearchParams(history.location.search);
+        history.push(`${history.location.pathname}?${search.toString()}`);
+        let {data} = await axios(`${JSON_API}/${window.location.search}`)
         dispatch({
             type: "GET_PRODUCTS",
             payload: data
@@ -158,6 +162,7 @@ const ProductContextProvider = ({children}) => {
     return (
         <addProductContext.Provider
         value={{
+            history,
             products: state.products,
             productToEdit: state.productToEdit,
             cart: state.cart,
