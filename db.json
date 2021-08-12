@@ -12,17 +12,16 @@
       "brand": "Cube",
       "model": "Pro 18",
       "description": "MTB BIKE ",
-      "price": "1500$",
+      "price": "1500",
       "category": "BMX",
       "image": "sdfsdfasd",
-      "id": 2,
-      "title": "Cubed"
+      "id": 2
     },
     {
       "brand": "Ghost",
       "model": "Casper",
       "description": "Mountain bike 28inches wheels",
-      "price": "1000$",
+      "price": "1000",
       "category": "MTB",
       "image": "asdasd",
       "id": 3
@@ -31,7 +30,7 @@
       "brand": "VISP",
       "model": "VS 7.0",
       "description": "The best choice",
-      "price": "350$",
+      "price": "350",
       "category": "MTB",
       "image": "VISP",
       "id": 4
@@ -40,7 +39,7 @@
       "brand": "GIANT",
       "model": "fart",
       "description": "Cheap bike",
-      "price": "100$",
+      "price": "100",
       "category": "MTB",
       "image": "ASD",
       "id": 5
@@ -49,7 +48,7 @@
       "brand": "ASD",
       "model": "ASD",
       "description": "ASD",
-      "price": "ASDASDADS",
+      "price": "999",
       "category": "MTB",
       "image": "ASD",
       "id": 6

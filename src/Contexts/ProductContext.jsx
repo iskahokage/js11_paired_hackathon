@@ -89,6 +89,28 @@ const ProductContextProvider = ({children}) => {
           payload: cart,
         });
       };
+      const deleteFromCart =(id, price)=>{
+        let items = JSON.parse(localStorage.getItem('cart'))
+        // console.log(items.products)
+        for (let i =0; i< items.products.length; i++) {
+          let targetItem = JSON.parse(items.products[i].item.id);
+          let targetItemPrice = JSON.parse(items.products[i].item.price);
+          // console.log(targetItemPrice, price)
+          
+          if (targetItem == id) {
+              items.products.splice(i, 1);
+              // console.log(items.products)
+          }
+          if (targetItemPrice == price){
+            items.totalPrice = items.totalPrice - price
+            // console.log(a)
+          }
+      }
+      items = JSON.stringify(items);
+      console.log(items)
+      localStorage.setItem("cart", items);
+      getCart()
+      }
       const addProductToCart = (product) => {
         let cart = JSON.parse(localStorage.getItem('cart'));
         if (!cart) {
@@ -146,6 +168,7 @@ const ProductContextProvider = ({children}) => {
             deleteProduct,
             getCart,
             addProductToCart,
+            deleteFromCart,
             changeProductCount,
         }}
         >

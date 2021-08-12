@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 export default function Cart() {
   const classes = useStyles();
   const [count, setCount] = useState([]);
-  const { cart, getCart, changeProductCount } = useProducts();
+  const { cart, getCart, changeProductCount,deleteFromCart } = useProducts();
 
   useEffect(() => {
     getCart();
@@ -36,7 +36,9 @@ export default function Cart() {
   useEffect(() => {
     setCount();
   }, [cart]);
-  console.log(cart.products)
+  useEffect(()=>{
+    
+  })
   const handleCountChange = (count, id) => {
     changeProductCount(count, id);
   };
@@ -73,9 +75,14 @@ export default function Cart() {
                   </TableCell>
                   <TableCell align="right">{product.subPrice}</TableCell>
                   <TableCell align="right">
-                  <IconButton onClick={window.localStorage.removeItem(product.item)} aria-label="delete">
+                  <IconButton 
+                    aria-label="delete"
+                    onClick={e => deleteFromCart(product.item.id, product.item.price)}
+                    >
                     <DeleteIcon />
                   </IconButton>
+                  
+                  {/* {console.log(product.item.id)} */}
                   </TableCell>
                 </TableRow>
               ))}
