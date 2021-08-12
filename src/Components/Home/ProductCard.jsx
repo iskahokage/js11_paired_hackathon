@@ -81,8 +81,6 @@ const ProductCard = () => {
           <div className="container">
           {products.map(item => (
             <Paper elevation={3}>
-
-            
             <li className={classes.card}>
                 <img className="productImg" src={item.image} alt="" />         
                 <span key={item.id}>{item.brand}</span>
