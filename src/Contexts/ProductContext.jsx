@@ -7,7 +7,6 @@ import { calcSubPrice, calcTotalPrice } from '../Helpers/Functions';
 
 export const addProductContext = React.createContext();
 
-
 export const useProducts = () => {
   return useContext(addProductContext);
 };
@@ -41,7 +40,7 @@ const reducer = (state=INIT_STATE, action) =>{
 
 
 const ProductContextProvider = ({children}) => {
-
+    const history = useHistory()
     const [state, dispatch] = useReducer(reducer, INIT_STATE)
     const history = useHistory();
     const getProducts = async () =>{

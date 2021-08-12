@@ -9,7 +9,6 @@ import ProductContextProvider from '../Contexts/ProductContext';
 import Authorization from '../Components/Auth/Login';
 import Registration from '../Components/Auth/Registration';
 import AuthContextProvider from '../Contexts/AuthContext';
-import Profile from '../Components/Profile/Profile';
 import Header from '../Components/Header/Header';
 import Footer from '../Components/Footer/Footer';
 

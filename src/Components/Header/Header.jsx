@@ -7,6 +7,8 @@ import { authContext } from '../../Contexts/AuthContext';
 import { addProductContext } from '../../Contexts/ProductContext';
 
 const Header = () => {
+	const history = useHistory()
+	const {getProductsInCart, getProducts} = useContext(addProductContext)
 	const {userEmail, user} = useContext(authContext);
 	const {history, getProducts} = useContext(addProductContext)
 	const [state, setState] = useState(false)
@@ -34,7 +36,7 @@ const Header = () => {
 	<>
 		<Navbar bg="dark" expand="lg" variant="dark">
 			<Container>
-				<Navbar.Brand href="#home" variant="light" className="brand" style={{ fontSize: 35 }}>
+				<Navbar.Brand href="#home"  className="brand" style={{ fontSize: 35 }}>
 					<Nav><Link to="/" className="nav-link" role="button">
 						VELOCITY
 					</Link></Nav> 
@@ -68,8 +70,8 @@ const Header = () => {
 									<NavDropdown.Item as={Link} to="/registration">
 										Зарегистрироваться
 									</NavDropdown.Item> */}
-									<NavDropdown.Item as={Link} to="/profile">
-										Личный кабинет
+									<NavDropdown.Item>
+										{userEmail}
 									</NavDropdown.Item>
 									<NavDropdown.Divider />
 									<NavDropdown.Item as={Link} onClick={logout1}>
