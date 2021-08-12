@@ -84,9 +84,9 @@ const ProductCard = () => {
     return (
           <div className="container">
           {products.map(item => (
-            <Paper elevation={3} className={classes.paper}>
 
-            
+            <Paper elevation={3} className={classes.paper}>
+      
             <li className={classes.card}>
                 <img className="productImg" src={item.image} alt="" />         
                 <span key={item.id}>{item.brand}</span>
