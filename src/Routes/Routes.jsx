@@ -10,27 +10,29 @@ import Authorization from '../Components/Auth/Login';
 import Registration from '../Components/Auth/Registration';
 import AuthContextProvider from '../Contexts/AuthContext';
 import Header from '../Components/Header/Header';
+import Footer from '../Components/Footer/Footer';
 
 
 const Routes = () => {
     return (
-        <AuthContextProvider>
-            <ProductContextProvider>
-        <BrowserRouter>
-                <Header/>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/add" component={AddProductPage}/>
-                    <Route path="/edit" component={EditProductPage}/>
-                    <Route path="/cart" component={Cart}/>
-                    <Route exact path="/catalog" component={ProductList}/>           
-                    <Route exact path="/registration" component={Registration} />
-                    <Route exact path="/auth" component={Authorization} />
-                    
-                </Switch>
-        </BrowserRouter>
-            </ProductContextProvider>
-                </AuthContextProvider>
+            <BrowserRouter>
+            <AuthContextProvider>
+                <ProductContextProvider>
+                    <Header/>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/add" component={AddProductPage}/>
+                        <Route path="/edit" component={EditProductPage}/>
+                        <Route path="/cart" component={Cart}/>
+                        <Route exact path="/catalog" component={ProductList}/>           
+                        <Route exact path="/registration" component={Registration} />
+                        <Route exact path="/auth" component={Authorization} />
+                        <Route exact path="/profile" component={Profile} />
+                    </Switch>
+                    <Footer/>
+                </ProductContextProvider>
+            </AuthContextProvider>
+            </BrowserRouter>
     );
 };
 

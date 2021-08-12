@@ -9,9 +9,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useEffect } from 'react';
 import { useProducts } from '../../Contexts/ProductContext';
-import { Tab, Typography } from '@material-ui/core';
+import { IconButton, Tab, Typography } from '@material-ui/core';
 import { useState } from 'react';
 import Header from '../Header/Header'
+import DeleteIcon from '@material-ui/icons/Delete';
 console.log('asd')
 
 const useStyles = makeStyles({
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
 export default function Cart() {
   const classes = useStyles();
   const [count, setCount] = useState([]);
-  const { cart, getCart, changeProductCount } = useProducts();
+  const { cart, getCart, changeProductCount,deleteFromCart } = useProducts();
 
   useEffect(() => {
     getCart();
@@ -35,7 +36,9 @@ export default function Cart() {
   useEffect(() => {
     setCount();
   }, [cart]);
-  console.log(cart.products)
+  useEffect(()=>{
+    
+  })
   const handleCountChange = (count, id) => {
     changeProductCount(count, id);
   };
@@ -47,10 +50,11 @@ export default function Cart() {
           <TableHead>
             <TableRow>
               <TableCell>Image</TableCell>
-              <TableCell align="right">Title</TableCell>
+              <TableCell align="right">Brand</TableCell>
               <TableCell align="right">Price</TableCell>
               <TableCell align="right">Count</TableCell>
               <TableCell align="right">SubPrice</TableCell>
+              <TableCell align="right">Deleting</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -60,7 +64,7 @@ export default function Cart() {
                   <TableCell>
                     <img className={classes.tableCellImg} src={product.item.image} alt={product.item.title} />
                   </TableCell>
-                  <TableCell align="right">{product.item.title}</TableCell>
+                  <TableCell align="right">{product.item.brand}</TableCell>
                   <TableCell align="right">{product.item.price}</TableCell>
                   <TableCell align="right">
                     <input
@@ -70,6 +74,16 @@ export default function Cart() {
                     />
                   </TableCell>
                   <TableCell align="right">{product.subPrice}</TableCell>
+                  <TableCell align="right">
+                  <IconButton 
+                    aria-label="delete"
+                    onClick={e => deleteFromCart(product.item.id, product.item.price)}
+                    >
+                    <DeleteIcon />
+                  </IconButton>
+                  
+                  {/* {console.log(product.item.id)} */}
+                  </TableCell>
                 </TableRow>
               ))}
 

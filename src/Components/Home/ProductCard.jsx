@@ -25,6 +25,10 @@ const useStyles = makeStyles(() => ({
       justifyContent: "space-between",
       maxWidth: "300px",
       height: "400px",  
+      
+    },
+    paper:{
+      marginBottom: "30px"
     },
     buyBtn: {
         backgroundColor: "white",
@@ -80,7 +84,7 @@ const ProductCard = () => {
     return (
           <div className="container">
           {products.map(item => (
-            <Paper elevation={3}>
+            <Paper elevation={3} className={classes.paper}>
 
             
             <li className={classes.card}>
