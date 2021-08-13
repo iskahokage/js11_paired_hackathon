@@ -86,6 +86,7 @@
       "model": "CityTravel",
       "description": "Balance is all thing",
       "price": 1100,
+      "image": "https://www.reidbikes.com/wp-content/uploads/2021/04/11-4-900x588.png",
       "category": "Городской",
       "id": 10
     },

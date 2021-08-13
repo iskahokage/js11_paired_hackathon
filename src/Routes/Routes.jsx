@@ -15,7 +15,7 @@ import Footer from '../Components/Footer/Footer';
 
 const Routes = () => {
     return (
-            <BrowserRouter>
+        <BrowserRouter>
             <AuthContextProvider>
                 <ProductContextProvider>
                     <Header/>
@@ -27,12 +27,12 @@ const Routes = () => {
                         <Route exact path="/catalog" component={ProductList}/>           
                         <Route exact path="/registration" component={Registration} />
                         <Route exact path="/auth" component={Authorization} />
-                        <Route exact path="/payment" component={Payment} />
+                        <Route exact path="/payment" component={Payment} />53
                     </Switch>
                     <Footer/>
                 </ProductContextProvider>
             </AuthContextProvider>
-            </BrowserRouter>
+        53</BrowserRouter>
     );
 };
 
