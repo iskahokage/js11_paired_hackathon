@@ -10,8 +10,7 @@ import Authorization from '../Components/Auth/Login';
 import Registration from '../Components/Auth/Registration';
 import AuthContextProvider from '../Contexts/AuthContext';
 import Header from '../Components/Header/Header';
-import Footer from '../Components/Footer/Footer';
-
+import Payment from '../Components/Payment/Payment'
 
 const Routes = () => {
     return (
@@ -27,6 +26,7 @@ const Routes = () => {
                         <Route exact path="/catalog" component={ProductList}/>           
                         <Route exact path="/registration" component={Registration} />
                         <Route exact path="/auth" component={Authorization} />
+                        <Route exact path="/payment" component={Payment} />
                     </Switch>
                     <Footer/>
                 </ProductContextProvider>

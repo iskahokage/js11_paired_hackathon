@@ -112,6 +112,7 @@ const ProductCard = () => {
                 </div>
               </div>
             {/* <li className={classes.card}>
+
                 <img className="productImg" src={item.image} alt="" />         
                 <span key={item.id}>{item.brand}</span>
                 <span key={item.id}>{item.model}</span>
