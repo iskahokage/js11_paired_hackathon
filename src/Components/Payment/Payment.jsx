@@ -24,6 +24,7 @@ export default class Payment extends React.Component {
         this.setState({ [name]: value });
     };
     paynow = () => {
+        localStorage.clear()
         const { history } = this.props;
         history.push("/");
     };

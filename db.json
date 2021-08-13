@@ -61,7 +61,7 @@
       "price": 7000,
       "category": "MTB",
       "image": "https://www.reidbikes.com/wp-content/uploads/2021/04/IMG_0041-900x588.png",
-      "id": 6
+      "id": 7
     },
     {
       "brand": "Electra",
@@ -70,7 +70,7 @@
       "price": 2100,
       "category": "Складной",
       "image": "https://www.reidbikes.com/wp-content/uploads/2021/05/Copy-of-Copy-of-Untitled-13.png",
-      "id": 6
+      "id": 8
     },
     {
       "brand": "RadPowerBikes",
@@ -79,7 +79,7 @@
       "price": 5400,
       "category": "Туринговый",
       "image": "https://www.reidbikes.com/wp-content/uploads/2021/03/16-14-900x588.png",
-      "id": 6
+      "id": 9
     },
     {
       "brand": "ReidBikes",
@@ -87,8 +87,7 @@
       "description": "Balance is all thing",
       "price": 1100,
       "category": "Городской",
-      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
-      "id": 6
+      "id": 10
     },
     {
       "brand": "Detroid-Bikes",
@@ -97,7 +96,7 @@
       "price": 3500,
       "category": "BMX",
       "image": "https://www.reidbikes.com/wp-content/uploads/2021/04/Untitled-design-2021-04-16T102333.862.png",
-      "id": 6
+      "id": 11
     }
   ],
   "users": [
