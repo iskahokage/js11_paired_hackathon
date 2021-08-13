@@ -111,29 +111,6 @@ const ProductCard = () => {
                       </NavLink>
                 </div>
               </div>
-            {/* <li className={classes.card}>
-                <img className="productImg" src={item.image} alt="" />         
-                <span key={item.id}>{item.brand}</span>
-                <span key={item.id}>{item.model}</span>
-                <span key={item.id}>{item.description}</span>              
-                <span key={item.id}>{item.category}</span> 
-                <span key={item.id}>{item.price}</span>
-                <div>
-                    <button className={classes.buyBtn}>
-                        Buy <AttachMoneyIcon/>   
-                    </button>
-                    <button 
-                    className={classes.addToCartBtn}
-                    onClick={() => addProductToCart(item)}
-                    >
-                        Add to Cart <AddShoppingCartIcon/>   
-                    </button>
-                </div>
-                <div><button onClick={()=>handleClick(item.id)}>Delete Item<DeleteIcon/></button>
-                    <NavLink to="/edit">
-                        <button onClick={()=>editProduct(item.id)}>Edit Product<EditIcon/></button>
-                    </NavLink> </div>
-            </li> */}
             </Paper>
             
           ))}

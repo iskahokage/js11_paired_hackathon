@@ -27,7 +27,7 @@ const Routes = () => {
                         <Route exact path="/catalog" component={ProductList}/>           
                         <Route exact path="/registration" component={Registration} />
                         <Route exact path="/auth" component={Authorization} />
-                        <Route path="/payment" component={Payment}/>
+                        <Route exact path="/payment" component={Payment} />
                     </Switch>
                     <Footer/>
                 </ProductContextProvider>
