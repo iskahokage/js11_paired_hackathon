@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { addProductContext } from '../../Contexts/ProductContext';
+import { authContext } from '../../Contexts/AuthContext';
 import {Paper} from '@material-ui/core';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
@@ -62,7 +63,15 @@ const useStyles = makeStyles(() => ({
 
 const ProductCard = () => {
     const {products, getProducts, deleteProduct, editProduct, addProductToCart, cart} = useContext(addProductContext)
+    const {userEmail, user} = useContext(authContext);
+    const [state, setState] = useState(false)
     const classes = useStyles();
+    let checkStatus = JSON.parse(localStorage.getItem("user"))
+    
+    useEffect(() => {
+      if (checkStatus) setState(true)
+  }, [userEmail])
+    
     useEffect(()=>{
         getProducts()
       }, [])
@@ -100,12 +109,20 @@ const ProductCard = () => {
                       Add to Cart <AddShoppingCartIcon/>
                     </Button>                  
                 </div>
-                <div className={classes.adminButtonsContainer}>
+                
+                {
+							state ? (
+								userEmail === 'admin@admin.com' ? (
+									<div className={classes.adminButtonsContainer}>
                       <button onClick={()=>handleClick(item.id)}>Delete Item<DeleteIcon/></button>
                       <NavLink to="/edit">
                             <button onClick={()=>editProduct(item.id)}>Edit Product<EditIcon/></button>
                       </NavLink>
                 </div>
+									) : (<></>)
+								) : (<></>)
+							}
+                
               </div>
             </Paper>
             

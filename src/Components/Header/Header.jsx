@@ -22,7 +22,7 @@ const Header = () => {
     useEffect(() => {
         if (checkStatus) setState(true)
     }, [userEmail])
-
+	console.log(userEmail)
     function logout1() {
         localStorage.setItem("user", JSON.stringify(0))
         setState(false)
@@ -56,8 +56,19 @@ const Header = () => {
 						style={{ maxHeight: '100px' }}
 						navbarScroll
 					>
+						{
+							state ? (
+								userEmail === 'admin@admin.com' ? (
+									<Nav> 
+										<Link to="/add" className="nav-link" role="button">Добавить</Link>
+									</Nav>
+									) : (<></>)
+								) : (<></>)
+							}
 						<Nav><Link to="/catalog" className="nav-link" role="button">Каталог</Link></Nav>
 						<Nav><Link to="/cart" className="nav-link" role="button">Корзина</Link></Nav>
+							
+						
 						{state ?
 							(
 								<NavDropdown title="Профиль" id="navbarScrollingDropdown">
