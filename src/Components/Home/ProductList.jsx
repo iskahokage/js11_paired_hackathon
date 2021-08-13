@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { addProductContext } from '../../Contexts/ProductContext';
-import './ProductList.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
 import ProductCard from './ProductCard';
@@ -19,7 +18,7 @@ const useStyles = makeStyles(() => ({
         padding: "10px",
         display: "flex",
         flexDirection: "column",
-    }
+    },
   }));
 
 

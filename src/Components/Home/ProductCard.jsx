@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { addProductContext } from '../../Contexts/ProductContext';
-import './ProductList.css';
 import {Paper} from '@material-ui/core';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
@@ -13,56 +12,56 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import Button from 'react-bootstrap/esm/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(() => ({
-    card: {
-      listStyle: "none",
-      display: "flex",
-      flexDirection: "column",
-      alignItems:"center",
-      justifyContent: "space-between",
-      maxWidth: "300px",
-      height: "400px",  
+  
+    container:{
+        maxWidth: "1100px",
+        display: "flex",
+        flexWrap: "wrap",
+        margin: "0 auto",
+        justifyContent: "space-evenly",  
+      },
+    card:{
+      maxWidth: "320px",
+      maxHeight: "auto", 
+      backgroundColor: 'rgba(33,37,41, 1)' ,
+      marginBottom: '30px'
       
     },
-    paper:{
-      marginBottom: "30px"
+    cardTitle:{
+      textAlign:'center',
+      color: "white", 
     },
-    buyBtn: {
-        backgroundColor: "white",
-        border: "solid #0D6EFD 2px",
-        '&:hover': {
-            backgroundColor: "#0D6EFD",
-            color: "white"
-        },
+    cardPrice:{
+      textAlign:'center',
+      color: 'white',
     },
-    addToCartBtn:{
-        backgroundColor: "white",
-        border: "solid #FF2800 2px",
-        '&:hover': {
-            backgroundColor: "#FF2800",
-            color: "white"
-        },
+    imgContainer:{
+      margin: '20px',
+      // maxWidth: "300px",
+      width: "280px",
+      maxHeight: "150px",
+      height: "100%",
     },
-    buyBtn:{
-      backgroundColor: "white",
-      border: "solid #0D6EFD 2px",
-      '&:hover': {
-          backgroundColor: "#0D6EFD",
-          color: "white"
-      },
+    bikeImg:{
+      maxWidth: "280px",
+      maxHeight: "170px",
     },
-    addToCartBtn:{
-      backgroundColor: "white",
-      border: "solid #FF2800 2px",
-      '&:hover': {
-          backgroundColor: "#FF2800",
-          color: "white"
+    buttonContainer:{
+      display: "flex",
+      justifyContent: "space-around",
+      margin: '20px 0',
     },
-  },
-  }));
+    adminButtonsContainer:{
+      display: "flex",
+      justifyContent: "space-around",
+      margin: "20px 0"
+    },
+
+}));
 
 
 const ProductCard = () => {
@@ -82,12 +81,37 @@ const ProductCard = () => {
 
 
     return (
-          <div className="container">
+          <div className={classes.container}>
           {products.map(item => (
-            <Paper elevation={3} className={classes.paper}>
-
-            
-            <li className={classes.card}>
+            <Paper elevation={3} className={classes.card}>
+              <div className={classes.topSection}>
+                <Paper elevation={3} className={classes.imgContainer}>
+                  <img className={classes.bikeImg} src={item.image} alt="" />
+                </Paper>
+              </div>
+              <div className={classes.bottomSection}>
+                    <p className={classes.cardTitle}>
+                      <b><h5>{item.brand}:</h5> {item.model}</b>
+                    </p>
+                    <p className={classes.cardPrice}>
+                      Цена: <b>{item.price}</b> Сом 
+                    </p>
+                <div className={classes.buttonContainer}>
+                    <Button variant="primary">
+                      Buy <AttachMoneyIcon/> 
+                    </Button>
+                    <Button variant="danger" onClick={() => addProductToCart(item)}>
+                      Add to Cart <AddShoppingCartIcon/>
+                    </Button>                  
+                </div>
+                <div className={classes.adminButtonsContainer}>
+                      <button onClick={()=>handleClick(item.id)}>Delete Item<DeleteIcon/></button>
+                      <NavLink to="/edit">
+                            <button onClick={()=>editProduct(item.id)}>Edit Product<EditIcon/></button>
+                      </NavLink>
+                </div>
+              </div>
+            {/* <li className={classes.card}>
                 <img className="productImg" src={item.image} alt="" />         
                 <span key={item.id}>{item.brand}</span>
                 <span key={item.id}>{item.model}</span>
@@ -109,7 +133,7 @@ const ProductCard = () => {
                     <NavLink to="/edit">
                         <button onClick={()=>editProduct(item.id)}>Edit Product<EditIcon/></button>
                     </NavLink> </div>
-            </li>
+            </li> */}
             </Paper>
             
           ))}

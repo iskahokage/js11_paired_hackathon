@@ -1,27 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import './Header.css'
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { authContext } from '../../Contexts/AuthContext';
 import { addProductContext } from '../../Contexts/ProductContext';
 
 const Header = () => {
 	const history = useHistory()
-	const {getProductsInCart, getProducts} = useContext(addProductContext)
 	const {userEmail, user} = useContext(authContext);
-	const {history, getProducts} = useContext(addProductContext)
+	const {getProducts, products} = useContext(addProductContext)
 	const [state, setState] = useState(false)
 	let checkStatus = JSON.parse(localStorage.getItem("user"))
-	console.log(userEmail);
 	
 	const handleValue = (e) => {
-		const search = new URLSearchParams(history.location.search);
+		const search = new URLSearchParams(history.location.search);		
 		search.set('q', e.target.value);
 		history.push(`${history.location.pathname}?${search.toString()}`);
 		getProducts();
 	  };
-
     useEffect(() => {
         if (checkStatus) setState(true)
     }, [userEmail])
