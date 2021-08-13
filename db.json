@@ -5,7 +5,7 @@
       "model": "TopSpeed 4",
       "description": "Fast and Furios",
       "price": 3500,
-      "category": "urban",
+      "category": "Туринговый",
       "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
       "id": 1
     },
@@ -15,7 +15,7 @@
       "description": "MTB BIKE ",
       "price": 1500,
       "category": "BMX",
-      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
+      "image": "https://www.reidbikes.com/wp-content/uploads/2021/04/Untitled-design-2021-04-16T102534.828.png",
       "id": 2
     },
     {
@@ -24,35 +24,79 @@
       "description": "Mountain bike 28inches wheels",
       "price": 1000,
       "category": "MTB",
-      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
+      "image": "http://pngimg.com/uploads/bicycle/bicycle_PNG5393.png",
       "id": 3
     },
     {
       "brand": "VISP",
       "model": "VS 7.0",
       "description": "The best choice",
-      "price": 350,
-      "category": "MTB",
-      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
+      "price": 800,
+      "category": "Городской",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwzoDdM4uSSlFn41No8rWa_lXiQyD8XzS9zfVli_GmysZ7Kwx6BOFGsqTvWECOrB-uADM&usqp=CAU",
       "id": 4
     },
     {
       "brand": "GIANT",
-      "model": "fart",
+      "model": "Mountain special",
       "description": "Cheap bike",
-      "price": 100,
+      "price": 9100,
       "category": "MTB",
-      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
+      "image": "https://www.reidbikes.com/wp-content/uploads/2021/04/11-4-900x588.png",
       "id": 5
     },
     {
-      "brand": "ASD",
-      "model": "ASD",
-      "description": "ASD",
-      "price": 999,
-      "category": "MTB",
-      "image": "https://www.vhv.rs/dpng/d/549-5493068_bicycle-transparent-background-png-single-speed-flat-bar.png",
+      "brand": "JIMBO",
+      "model": "Skretch 2",
+      "description": "Balance is all thing",
+      "price": 1500,
+      "category": "Городской",
+      "image": "https://s7d4.scene7.com/is/image/TrekBicycleProducts/Asset_170579?wid=1490&hei=1080&fit=fit,1&fmt=png-alpha&qlt=80,1&op_usm=0,0,0,0&iccEmbed=0",
       "id": 6
+    },
+    {
+      "brand": "Alta",
+      "model": "CrossRoad",
+      "description": "High Hopes",
+      "price": 7000,
+      "category": "MTB",
+      "image": "https://www.reidbikes.com/wp-content/uploads/2021/04/IMG_0041-900x588.png",
+      "id": 7
+    },
+    {
+      "brand": "Electra",
+      "model": "Dauphny",
+      "description": "Special for women",
+      "price": 2100,
+      "category": "Складной",
+      "image": "https://www.reidbikes.com/wp-content/uploads/2021/05/Copy-of-Copy-of-Untitled-13.png",
+      "id": 8
+    },
+    {
+      "brand": "RadPowerBikes",
+      "model": "RadMission",
+      "description": "RoadMission",
+      "price": 5400,
+      "category": "Туринговый",
+      "image": "https://www.reidbikes.com/wp-content/uploads/2021/03/16-14-900x588.png",
+      "id": 9
+    },
+    {
+      "brand": "ReidBikes",
+      "model": "CityTravel",
+      "description": "Balance is all thing",
+      "price": 1100,
+      "category": "Городской",
+      "id": 10
+    },
+    {
+      "brand": "Detroid-Bikes",
+      "model": "Trickster",
+      "description": "Make a cool trick",
+      "price": 3500,
+      "category": "BMX",
+      "image": "https://www.reidbikes.com/wp-content/uploads/2021/04/Untitled-design-2021-04-16T102333.862.png",
+      "id": 11
     }
   ],
   "users": [
