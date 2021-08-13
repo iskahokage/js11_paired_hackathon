@@ -65,7 +65,7 @@ const ProductList = () => {
     const handlePage = (e, page) => {
         const search = new URLSearchParams(history.location.search)
         search.set('_page', page);
-        history.push(`${history.location.pathname}?_limit=4${search.toString()}`)
+        history.push(`${history.location.pathname}?_limit=3${search.toString()}`)
         setPage(page);
         getProducts(history)
     }

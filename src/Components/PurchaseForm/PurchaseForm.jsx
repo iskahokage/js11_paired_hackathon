@@ -43,17 +43,16 @@ const PurchaseForm = (props) => {
                 </InputGroup>
 
                 <InputGroup className="mb-3">
-                    <InputGroup.Text>Расчетный Адрес</InputGroup.Text>
+                    <InputGroup.Text>Адрес</InputGroup.Text>
                     <FormControl aria-label="Amount (to the nearest dollar)" />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text>Почтовый индекс</InputGroup.Text>
+                    <InputGroup.Text>Индекс</InputGroup.Text>
                     <FormControl aria-label="Amount (to the nearest dollar)" />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text>Телефонный номер</InputGroup.Text>
                     <InputGroup.Text>+996</InputGroup.Text>
-                    <FormControl aria-label="Amount (to the nearest dollar)" />
+                    <FormControl aria-label="Amount (to the nearest dollar)" placeholder="Телефонный номер" />
                 </InputGroup>
 
             </Modal.Body>

@@ -26,7 +26,7 @@ const reducer = (state=INIT_STATE, action) =>{
                 ...state,
                 products: action.payload.data,
                 paginationPages: 
-                Math.ceil(action.payload.headers['x-total-count'] / 4) 
+                Math.ceil(action.payload.headers['x-total-count'] / 3) 
             }
         case "EDIT_PRODUCT":
             return{
@@ -49,9 +49,9 @@ const ProductContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, INIT_STATE)
     const getProducts = async () =>{
         const search = new URLSearchParams(window.location.search)
-        search.set('_limit', 4)
+        search.set('_limit', 3)
         history ? ( history.push(`${history.location.pathname}?${search.toString()}`)) : (console.log(null)); 
-        const res = await axios(`${JSON_API}?_limit=4&${window.location.search}`)
+        const res = await axios(`${JSON_API}?_limit=3&${window.location.search}`)
         dispatch({
             type: "GET_PRODUCTS",
             payload: res
@@ -98,19 +98,15 @@ const ProductContextProvider = ({children}) => {
       };
       const deleteFromCart =(id, price)=>{
         let items = JSON.parse(localStorage.getItem('cart'))
-        // console.log(items.products)
         for (let i =0; i< items.products.length; i++) {
           let targetItem = JSON.parse(items.products[i].item.id);
           let targetItemPrice = JSON.parse(items.products[i].item.price);
-          // console.log(targetItemPrice, price)
           
           if (targetItem == id) {
               items.products.splice(i, 1);
-              // console.log(items.products)
           }
           if (targetItemPrice == price){
             items.totalPrice = items.totalPrice - price
-            // console.log(a)
           }
       }
       items = JSON.stringify(items);
