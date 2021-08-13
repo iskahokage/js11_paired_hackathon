@@ -28,7 +28,10 @@ const useStyles = makeStyles({
   },
   button: {
     marginTop: 11
-  }
+  },
+  a:{
+    height: '40vh'
+  },
 });
 
 export default function Cart() {
@@ -115,6 +118,8 @@ export default function Cart() {
       show={modalShow}
       onHide={() => setModalShow(false)}
       />
+      <div className={classes.a}>
+      </div>
     </>
   );
 }

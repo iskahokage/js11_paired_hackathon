@@ -16,6 +16,7 @@ const useStyles = makeStyles(() => ({
     },
     paper:{
         maxWidth: "1200px",
+        width:'100%',
         display: "flex",
         flexWrap: "wrap",
         margin: "0 auto",
@@ -91,9 +92,6 @@ const ProductList = () => {
 
     return (
         <div>
-            
-            
-            
                 <div className={classes.filterContainer}>
                     <Grid>
                         <Paper className={classes.sideBar}>
