@@ -72,6 +72,7 @@ const ProductList = () => {
     useEffect(()=>{
         getProducts()
       }, [])
+    useEffect(()=>{})
    
       function fetchProducts(params, value) {
         let search = new URLSearchParams(history.location.search)

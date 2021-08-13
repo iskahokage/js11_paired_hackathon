@@ -15,6 +15,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from 'react-bootstrap/esm/Button';
 import Typography from '@material-ui/core/Typography';
+import PurchaseForm from '../PurchaseForm/PurchaseForm';
 
 const useStyles = makeStyles(() => ({
   
@@ -65,6 +66,7 @@ const ProductCard = () => {
     const {products, getProducts, deleteProduct, editProduct, addProductToCart, cart} = useContext(addProductContext)
     const {userEmail, user} = useContext(authContext);
     const [state, setState] = useState(false)
+    const [modalShow, setModalShow] = useState(false);
     const classes = useStyles();
     let checkStatus = JSON.parse(localStorage.getItem("user"))
     
@@ -102,7 +104,7 @@ const ProductCard = () => {
                       Цена: <b>{item.price}</b> Сом 
                     </p>
                 <div className={classes.buttonContainer}>
-                    <Button variant="primary">
+                    <Button variant="primary" onClick={() => setModalShow(true)}>
                       Buy <AttachMoneyIcon/> 
                     </Button>
                     <Button variant="danger" onClick={() => addProductToCart(item)}>
@@ -127,6 +129,10 @@ const ProductCard = () => {
             </Paper>
             
           ))}
+          <PurchaseForm 
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+      />
         </>
     );
 };
