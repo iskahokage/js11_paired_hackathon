@@ -18,6 +18,7 @@ import { useState } from 'react';
 import Header from '../Header/Header'
 import PurchaseForm from '../PurchaseForm/PurchaseForm';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   table: {
@@ -32,9 +33,9 @@ const useStyles = makeStyles({
 });
 
 export default function Cart() {
+  const history = useHistory()
   const classes = useStyles();
   const [count, setCount] = useState([]);
-  const { cart, getCart, changeProductCount } = useProducts();
   const [modalShow, setModalShow] = useState(false);
   const { cart, getCart, changeProductCount,deleteFromCart } = useProducts();
 

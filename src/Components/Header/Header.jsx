@@ -7,8 +7,6 @@ import { authContext } from '../../Contexts/AuthContext';
 import { addProductContext } from '../../Contexts/ProductContext';
 
 const Header = () => {
-	const history = useHistory()
-	const {getProductsInCart, getProducts} = useContext(addProductContext)
 	const {userEmail, user} = useContext(authContext);
 	const {history, getProducts} = useContext(addProductContext)
 	const [state, setState] = useState(false)

@@ -12,186 +12,186 @@ export const useProducts = () => {
 };
 
 const INIT_STATE = {
-    products:[],
-    productToEdit: null,
-    cart: [],
+  products: [],
+  productToEdit: null,
+  cart: [],
 
 }
 
-const reducer = (state=INIT_STATE, action) =>{
-    switch (action.type) {
-        case "GET_PRODUCTS":
-            return{
-                ...state,
-                products: action.payload 
-            }
-        case "EDIT_PRODUCT":
-            return{
-                ...state,
-                productToEdit: action.payload
-            }
-         case "GET_CART":
+const reducer = (state = INIT_STATE, action) => {
+  switch (action.type) {
+    case "GET_PRODUCTS":
+      return {
+        ...state,
+        products: action.payload
+      }
+    case "EDIT_PRODUCT":
+      return {
+        ...state,
+        productToEdit: action.payload
+      }
+    case "GET_CART":
       return { ...state, cart: action.payload };
-      case "FILTER_PRODUCTS_BY_PRICE":
-            return{...state, products: action.payload}
-        default:
-            return state;
-    }
+    case "FILTER_PRODUCTS_BY_PRICE":
+      return { ...state, products: action.payload }
+    default:
+      return state;
+  }
 
 }
 
 
-const ProductContextProvider = ({children}) => {
-    const history = useHistory()
-    const [state, dispatch] = useReducer(reducer, INIT_STATE)
-    const history = useHistory();
-    const getProducts = async () =>{
-      console.log(history)
-        const search = new URLSearchParams(history.location.search);
-        history.push(`${history.location.pathname}?${search.toString()}`);
-        let {data} = await axios(`${JSON_API}/${window.location.search}`)
-        dispatch({
-            type: "GET_PRODUCTS",
-            payload: data
-        })
-    }
+const ProductContextProvider = ({ children }) => {
+  const history = useHistory();
+  const [state, dispatch] = useReducer(reducer, INIT_STATE)
+  
+  const getProducts = async () => {
+    console.log(history)
+    const search = new URLSearchParams(history.location.search);
+    history.push(`${history.location.pathname}?${search.toString()}`);
+    let { data } = await axios(`${JSON_API}/${window.location.search}`)
+    dispatch({
+      type: "GET_PRODUCTS",
+      payload: data
+    })
+  }
 
-    const addProduct =(newProduct)=>{
-        axios.post(JSON_API, newProduct)
-        getProducts()
-    }
-    const deleteProduct = async (id)=>{
-        await axios.delete(`${JSON_API}/${id}`)
-        getProducts()
-    }   
-    const editProduct = async(id)=>{
-        let {data} = await axios(`${JSON_API}/${id}`)
-        dispatch({
-            type: "EDIT_PRODUCT",
-            payload: data
+  const addProduct = (newProduct) => {
+    axios.post(JSON_API, newProduct)
+    getProducts()
+  }
+  const deleteProduct = async (id) => {
+    await axios.delete(`${JSON_API}/${id}`)
+    getProducts()
+  }
+  const editProduct = async (id) => {
+    let { data } = await axios(`${JSON_API}/${id}`)
+    dispatch({
+      type: "EDIT_PRODUCT",
+      payload: data
+    })
+  }
+  const saveProduct = async (newProduct) => {
+    await axios.patch(`${JSON_API}/${newProduct.id}`, newProduct)
+  }
+  const getCart = () => {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (!cart) {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify({
+          products: [],
+          totalPrice: 0,
         })
-    }
-    const saveProduct = async(newProduct)=>{
-      await axios.patch(`${JSON_API}/${newProduct.id}`, newProduct)
-    }
-    const getCart = () => {
-        let cart = JSON.parse(localStorage.getItem('cart'));
-        if (!cart) {
-          localStorage.setItem(
-            "cart",
-            JSON.stringify({
-              products: [],
-              totalPrice: 0,
-            })
-          );
-          cart = {
-            products: [],
-            totalPrice: 0,
-          };
-        }
-        dispatch({
-          type: "GET_CART",
-          payload: cart,
-        });
+      );
+      cart = {
+        products: [],
+        totalPrice: 0,
       };
-      const deleteFromCart =(id, price)=>{
-        let items = JSON.parse(localStorage.getItem('cart'))
+    }
+    dispatch({
+      type: "GET_CART",
+      payload: cart,
+    });
+  };
+  const deleteFromCart = (id, price) => {
+    let items = JSON.parse(localStorage.getItem('cart'))
+    // console.log(items.products)
+    for (let i = 0; i < items.products.length; i++) {
+      let targetItem = JSON.parse(items.products[i].item.id);
+      let targetItemPrice = JSON.parse(items.products[i].item.price);
+      // console.log(targetItemPrice, price)
+
+      if (targetItem == id) {
+        items.products.splice(i, 1);
         // console.log(items.products)
-        for (let i =0; i< items.products.length; i++) {
-          let targetItem = JSON.parse(items.products[i].item.id);
-          let targetItemPrice = JSON.parse(items.products[i].item.price);
-          // console.log(targetItemPrice, price)
-          
-          if (targetItem == id) {
-              items.products.splice(i, 1);
-              // console.log(items.products)
-          }
-          if (targetItemPrice == price){
-            items.totalPrice = items.totalPrice - price
-            // console.log(a)
-          }
       }
-      items = JSON.stringify(items);
-      console.log(items)
-      localStorage.setItem("cart", items);
-      getCart()
+      if (targetItemPrice == price) {
+        items.totalPrice = items.totalPrice - price
+        // console.log(a)
       }
-      const addProductToCart = (product) => {
-        let cart = JSON.parse(localStorage.getItem('cart'));
-        if (!cart) {
-          cart = {
-            products: [],
-            totalPrice: 0,
-          };
-        }
-        let newProduct = {
-          item: product,
-          count: 1,
-          subPrice: +product.price,
-        };
-        
-        let  productToFind = cart.products.filter(
-          (item) => item.item.id === product.id
-        )
-        if(productToFind.length == 0){
-          cart.products.push(newProduct)
-        }
-
-        cart.totalPrice = calcTotalPrice(cart.products);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        dispatch({
-          type: "GET_CART",
-          payload: cart,
-        });
-      };
-      const changeProductCount = (count, id) => {
-        let cart = JSON.parse(localStorage.getItem('cart'));
-        cart.products = cart.products.map((product) => {
-          if (product.item.id === id) {
-            product.count = count;
-            product.subPrice = calcSubPrice(product);
-          }
-          return product;
-        });
-
-        cart.totalPrice = calcTotalPrice(cart.products);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        dispatch({
-          type: "GET_CART",
-          payload: cart,
-        });
-
-      };
-      async function filterProductsByPrice(price){
-        const {data} = await axios(JSON_API)
-        const filteredArr = data.filter(item => +item.price <= +price)
-        dispatch({
-            type: "FILTER_PRODUCTS_BY_PRICE",
-            payload: filteredArr
-        })
     }
-    return (
-        <addProductContext.Provider
-        value={{
-            history,
-            products: state.products,
-            productToEdit: state.productToEdit,
-            cart: state.cart,
-            getProducts,
-            addProduct,
-            editProduct,
-            saveProduct,
-            deleteProduct,
-            getCart,
-            addProductToCart,
-            deleteFromCart,
-            changeProductCount,
-            filterProductsByPrice,
-        }}
-        >
-            {children}
-        </addProductContext.Provider>
-    );
+    items = JSON.stringify(items);
+    console.log(items)
+    localStorage.setItem("cart", items);
+    getCart()
+  }
+  const addProductToCart = (product) => {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (!cart) {
+      cart = {
+        products: [],
+        totalPrice: 0,
+      };
+    }
+    let newProduct = {
+      item: product,
+      count: 1,
+      subPrice: +product.price,
+    };
+
+    let productToFind = cart.products.filter(
+      (item) => item.item.id === product.id
+    )
+    if (productToFind.length == 0) {
+      cart.products.push(newProduct)
+    }
+
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    dispatch({
+      type: "GET_CART",
+      payload: cart,
+    });
+  };
+  const changeProductCount = (count, id) => {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    cart.products = cart.products.map((product) => {
+      if (product.item.id === id) {
+        product.count = count;
+        product.subPrice = calcSubPrice(product);
+      }
+      return product;
+    });
+
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    dispatch({
+      type: "GET_CART",
+      payload: cart,
+    });
+
+  };
+  async function filterProductsByPrice(price) {
+    const { data } = await axios(JSON_API)
+    const filteredArr = data.filter(item => +item.price <= +price)
+    dispatch({
+      type: "FILTER_PRODUCTS_BY_PRICE",
+      payload: filteredArr
+    })
+  }
+  return (
+    <addProductContext.Provider
+      value={{
+        history,
+        products: state.products,
+        productToEdit: state.productToEdit,
+        cart: state.cart,
+        getProducts,
+        addProduct,
+        editProduct,
+        saveProduct,
+        deleteProduct,
+        getCart,
+        addProductToCart,
+        deleteFromCart,
+        changeProductCount,
+        filterProductsByPrice,
+      }}
+    >
+      {children}
+    </addProductContext.Provider>
+  );
 };
 
 export default ProductContextProvider;

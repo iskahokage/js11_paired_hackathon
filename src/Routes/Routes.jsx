@@ -14,9 +14,10 @@ import Payment from '../Components/Payment/Payment'
 
 const Routes = () => {
     return (
+        <BrowserRouter>
         <AuthContextProvider>
             <ProductContextProvider>
-        <BrowserRouter>
+        
                 <Header/>
                 <Switch>
                     <Route exact path="/" component={Home} />
@@ -29,9 +30,10 @@ const Routes = () => {
                     <Route exact path="/auth" component={Authorization} />
                     <Route exact path="/payment" component={Payment} />
                 </Switch>
-        </BrowserRouter>
+        
             </ProductContextProvider>
                 </AuthContextProvider>
+                </BrowserRouter >
 
     );
 };
