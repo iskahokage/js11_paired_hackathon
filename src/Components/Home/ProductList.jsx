@@ -89,7 +89,7 @@ const ProductList = () => {
                             </FormControl>
                             <button onClick={reset}>Reset Filter</button>
                         </Grid>
-                        <Grid container direction="row">
+                        <Grid >
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">
                                     Цена
