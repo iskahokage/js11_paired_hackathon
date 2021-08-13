@@ -44,9 +44,12 @@ const reducer = (state=INIT_STATE, action) =>{
 const ProductContextProvider = ({children}) => {
     const history = useHistory()
     const [state, dispatch] = useReducer(reducer, INIT_STATE)
-
+    const history = useHistory();
     const getProducts = async () =>{
-        let {data} = await axios(JSON_API)
+      console.log(history)
+        const search = new URLSearchParams(history.location.search);
+        history.push(`${history.location.pathname}?${search.toString()}`);
+        let {data} = await axios(`${JSON_API}/${window.location.search}`)
         dispatch({
             type: "GET_PRODUCTS",
             payload: data
@@ -91,6 +94,28 @@ const ProductContextProvider = ({children}) => {
           payload: cart,
         });
       };
+      const deleteFromCart =(id, price)=>{
+        let items = JSON.parse(localStorage.getItem('cart'))
+        // console.log(items.products)
+        for (let i =0; i< items.products.length; i++) {
+          let targetItem = JSON.parse(items.products[i].item.id);
+          let targetItemPrice = JSON.parse(items.products[i].item.price);
+          // console.log(targetItemPrice, price)
+          
+          if (targetItem == id) {
+              items.products.splice(i, 1);
+              // console.log(items.products)
+          }
+          if (targetItemPrice == price){
+            items.totalPrice = items.totalPrice - price
+            // console.log(a)
+          }
+      }
+      items = JSON.stringify(items);
+      console.log(items)
+      localStorage.setItem("cart", items);
+      getCart()
+      }
       const addProductToCart = (product) => {
         let cart = JSON.parse(localStorage.getItem('cart'));
         if (!cart) {
@@ -148,6 +173,7 @@ const ProductContextProvider = ({children}) => {
     return (
         <addProductContext.Provider
         value={{
+            history,
             products: state.products,
             productToEdit: state.productToEdit,
             cart: state.cart,
@@ -158,6 +184,7 @@ const ProductContextProvider = ({children}) => {
             deleteProduct,
             getCart,
             addProductToCart,
+            deleteFromCart,
             changeProductCount,
             filterProductsByPrice,
         }}

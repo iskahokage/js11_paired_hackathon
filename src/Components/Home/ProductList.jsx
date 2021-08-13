@@ -21,6 +21,8 @@ const useStyles = makeStyles(() => ({
         maxWidth: "1300px",
         margin: "0 auto",
         padding: "10px",
+        display: "flex",
+        flexDirection: "column",
     }
 }));
 

@@ -35,6 +35,24 @@
       "category": "MTB",
       "image": "https://cdn.shopify.com/s/files/1/0903/4494/files/evil-insurgent-tranny-hero_640x.png?v=17453130864036632235",
       "id": 4
+    },
+    {
+      "brand": "GIANT",
+      "model": "fart",
+      "description": "Cheap bike",
+      "price": "100",
+      "category": "MTB",
+      "image": "ASD",
+      "id": 5
+    },
+    {
+      "brand": "ASD",
+      "model": "ASD",
+      "description": "ASD",
+      "price": "999",
+      "category": "MTB",
+      "image": "ASD",
+      "id": 6
     }
   ],
   "users": [

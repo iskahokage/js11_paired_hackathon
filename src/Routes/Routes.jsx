@@ -32,6 +32,7 @@ const Routes = () => {
         </BrowserRouter>
             </ProductContextProvider>
                 </AuthContextProvider>
+
     );
 };
 
