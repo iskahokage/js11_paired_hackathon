@@ -18,11 +18,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(() => ({
   
     container:{
-        maxWidth: "1100px",
-        display: "flex",
-        flexWrap: "wrap",
-        margin: "0 auto",
-        justifyContent: "space-evenly",  
+          
       },
     card:{
       maxWidth: "320px",
@@ -81,7 +77,7 @@ const ProductCard = () => {
 
 
     return (
-          <div className={classes.container}>
+        <>
           {products.map(item => (
             <Paper elevation={3} className={classes.card}>
               <div className={classes.topSection}>
@@ -114,7 +110,7 @@ const ProductCard = () => {
             </Paper>
             
           ))}
-          </div>
+        </>
     );
 };
 
