@@ -1,11 +1,12 @@
 {
   "bikes": [
     {
-      "brand": "SpeedX TopSpeed 4",
+      "brand": "SpeedX",
+      "model": "TopSpeed 4",
       "description": "Fast and Furios",
       "price": "3500",
       "category": "urban",
-      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.1_JGnCZnQqpWBIFDRMXHQgHaHa%26pid%3DApi&f=1",
+      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
       "id": 1
     },
     {
@@ -14,7 +15,7 @@
       "description": "MTB BIKE ",
       "price": "1500",
       "category": "BMX",
-      "image": "sdfsdfasd",
+      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
       "id": 2
     },
     {
@@ -23,7 +24,7 @@
       "description": "Mountain bike 28inches wheels",
       "price": "1000",
       "category": "MTB",
-      "image": "asdasd",
+      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
       "id": 3
     },
     {
@@ -32,7 +33,7 @@
       "description": "The best choice",
       "price": "350",
       "category": "MTB",
-      "image": "VISP",
+      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
       "id": 4
     },
     {
@@ -41,7 +42,7 @@
       "description": "Cheap bike",
       "price": "100",
       "category": "MTB",
-      "image": "ASD",
+      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
       "id": 5
     },
     {
@@ -50,7 +51,7 @@
       "description": "ASD",
       "price": "999",
       "category": "MTB",
-      "image": "ASD",
+      "image": "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2019/HYBRIDE/LANES/86SC1002_PY18_SQUARE_CROSS_1-8_AL_U_IRIDIUMSILVER_JETBLACK_STARWHITE.png",
       "id": 6
     }
   ],

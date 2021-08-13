@@ -34,7 +34,6 @@ const useStyles = makeStyles({
 export default function Cart() {
   const classes = useStyles();
   const [count, setCount] = useState([]);
-  const { cart, getCart, changeProductCount } = useProducts();
   const [modalShow, setModalShow] = useState(false);
   const { cart, getCart, changeProductCount,deleteFromCart } = useProducts();
 
