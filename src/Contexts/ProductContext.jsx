@@ -15,6 +15,7 @@ const INIT_STATE = {
     products:[],
     productToEdit: null,
     cart: [],
+    paginationPages: 1
 
 }
 
@@ -23,7 +24,9 @@ const reducer = (state=INIT_STATE, action) =>{
         case "GET_PRODUCTS":
             return{
                 ...state,
-                products: action.payload 
+                products: action.payload.data,
+                paginationPages: 
+                Math.ceil(action.payload.headers['x-total-count'] / 4) 
             }
         case "EDIT_PRODUCT":
             return{
@@ -45,10 +48,10 @@ const ProductContextProvider = ({children}) => {
     const getProducts = async () =>{
         const search = new URLSearchParams(history.location.search);
         history.push(`${history.location.pathname}?${search.toString()}`);
-        let {data} = await axios(`${JSON_API}/${window.location.search}`)
+        let res = await axios(`${JSON_API}/${window.location.search}`)
         dispatch({
             type: "GET_PRODUCTS",
-            payload: data
+            payload: res
         })
     }
 
@@ -163,6 +166,7 @@ const ProductContextProvider = ({children}) => {
             products: state.products,
             productToEdit: state.productToEdit,
             cart: state.cart,
+            paginationPages: state.paginationPages,
             getProducts,
             addProduct,
             editProduct,

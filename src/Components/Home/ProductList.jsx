@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { addProductContext } from '../../Contexts/ProductContext';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import Header from '../Header/Header'
 import { Paper } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
 
 
 const useStyles = makeStyles(() => ({
@@ -23,8 +24,24 @@ const useStyles = makeStyles(() => ({
 
 
 const ProductList = () => {
-    const {products, getProducts, deleteProduct, editProduct} = useContext(addProductContext)
+    const {products, getProducts, deleteProduct, paginationPages,editProduct} = useContext(addProductContext)
     const classes = useStyles();
+    const history = useHistory();
+    const [page, setPage] = useState(1);
+    
+
+    function getPage(){
+        const search = new URLSearchParams(history.location.search)
+        return search.get('_page')
+    }
+
+    const handlePage = (e, page) => {
+        const search = new URLSearchParams(history.location.search)
+        search.set('_page', page);
+        history.push(`${history.location.pathname}?_limit=4${search.toString()}`)
+        setPage(page);
+        getProducts(history)
+    }
     useEffect(()=>{
         getProducts()
       }, [])
@@ -38,6 +55,7 @@ const ProductList = () => {
             <Paper className={classes.paper}>
                 <ProductCard />
             </Paper>
+            <Pagination count={paginationPages} page={page} onChange={handlePage} size="large" />
         </>
     );
 };
