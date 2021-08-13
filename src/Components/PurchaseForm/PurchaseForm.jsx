@@ -51,9 +51,9 @@ const PurchaseForm = (props) => {
                     <FormControl aria-label="Amount (to the nearest dollar)" />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text>Телефонный номер</InputGroup.Text>
+                    
                     <InputGroup.Text>+996</InputGroup.Text>
-                    <FormControl aria-label="Amount (to the nearest dollar)" />
+                    <FormControl aria-label="Amount (to the nearest dollar)" placeholder="Телефонный номер"/>
                 </InputGroup>
 
             </Modal.Body>

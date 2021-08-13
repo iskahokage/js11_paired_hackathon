@@ -12,7 +12,7 @@ const ImageSlider = () => {
 
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block w-100 h-50"
           src={cube}
           alt="First slide"
         />
@@ -20,7 +20,7 @@ const ImageSlider = () => {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block w-100 h-50"
           src={RPB}
           alt="First slide"
         />
@@ -28,7 +28,7 @@ const ImageSlider = () => {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block w-100 h-50"
           src={Electra}
           alt="Second slide"
         />
@@ -37,7 +37,7 @@ const ImageSlider = () => {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block w-100 h-50"
           src={Forward}
           alt="Third slide"
         />
