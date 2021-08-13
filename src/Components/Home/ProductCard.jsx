@@ -96,7 +96,7 @@ const ProductCard = () => {
               </div>
               <div className={classes.bottomSection}>
                     <p className={classes.cardTitle}>
-                      <b><h5>{item.brand}:</h5> {item.model}</b>
+                      <b><h5>{item.category} {item.brand}:</h5> {item.model}</b>
                     </p>
                     <p className={classes.cardPrice}>
                       Цена: <b>{item.price}</b> Сом 

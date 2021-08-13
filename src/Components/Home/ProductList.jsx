@@ -6,6 +6,7 @@ import ProductCard from './ProductCard';
 import Header from '../Header/Header'
 import { FormControlLabel, Grid, FormControl, Radio, RadioGroup, FormLabel, Paper, Container } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
+import { Button } from 'react-bootstrap';
 
 
 const useStyles = makeStyles(() => ({
@@ -20,10 +21,30 @@ const useStyles = makeStyles(() => ({
         margin: "0 auto",
         justifyContent: "space-evenly",
     },
+    sideBar:{
+        margin:'0 20px 0 20px',
+    },
+    filterContainer:{
+        maxWidth: "300px",
+        margin: '0 auto'
+    },
+    filter:{
+        display: 'flex',
+        padding: '10px 10px',
+        justifyContent: 'space-around'
+    },
     paginationContainer:{
         margin: '20px auto',
         display: 'flex',
         justifyContent: 'center'
+    },
+    wrapper:{
+        display: 'flex',
+    },
+    buttonContainer:{
+        display:'flex',
+        justifyContent: 'center',
+        paddingBottom: '10px'
     }
   }));
 
@@ -70,51 +91,55 @@ const ProductList = () => {
 
     return (
         <div>
-                        <div >
-                <Grid container direction={'column'} spacing={24}>
-                    <Paper className={classes.paper} item>
-                        <Grid >
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">
-                                    Категория
-                                </FormLabel>
-                                <RadioGroup onChange={(e) => fetchProducts("category", e.target.value)} arial-label="category" name="category">
-                                    <FormControlLabel value="MTB" control={<Radio />} label="MTB" />
-                                    <FormControlLabel value="Городской" control={<Radio />} label="Городской" />
-                                    <FormControlLabel value="Туринговый" control={<Radio />} label="Туринговый" />
-                                    <FormControlLabel value="BMX" control={<Radio />} label="BMX" />
-                                    <FormControlLabel value="Electro" control={<Radio />} label="Electro" />
-                                    <FormControlLabel value="Складной" control={<Radio />} label="Складной" />
-                                </RadioGroup>
-                            </FormControl>
-                            <button onClick={reset}>Reset Filter</button>
-                        </Grid>
-                        <Grid >
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">
-                                    Цена
-                                </FormLabel>
-                                <RadioGroup onChange={(e) => fetchProducts("price_lte", e.target.value)} arial-label="price" name="price1">
-                                    <FormControlLabel value="1000" control={<Radio />} label="1000" />
-                                    <FormControlLabel value="2500" control={<Radio />} label="2500" />
-                                    <FormControlLabel value="5000" control={<Radio />} label="5000" />
-                                    <FormControlLabel value="7000" control={<Radio />} label="7000" />
-                                    <FormControlLabel value="8500" control={<Radio />} label="8500" />
-                                    <FormControlLabel value="10000" control={<Radio />} label="10000" />
-                                </RadioGroup>
-                            </FormControl>
-
-                        </Grid>
-                    </Paper>
-                </Grid>
-            </div>
             
             
             
+                <div className={classes.filterContainer}>
+                    <Grid>
+                        <Paper className={classes.sideBar}>
+                            <div className={classes.filter}>
+                                <Grid>
+                                    <FormControl component="fieldset">
+                                            <h5>Категория</h5>
+                                        <RadioGroup onChange={(e) => fetchProducts("category", e.target.value)} arial-label="category" name="category">
+                                            <FormControlLabel value="MTB" control={<Radio />} label="MTB" />
+                                            <FormControlLabel value="Городской" control={<Radio />} label="Городской" />
+                                            <FormControlLabel value="Туринговый" control={<Radio />} label="Туринговый" />
+                                            <FormControlLabel value="BMX" control={<Radio />} label="BMX" />
+                                            <FormControlLabel value="Electro" control={<Radio />} label="Electro" />
+                                            <FormControlLabel value="Складной" control={<Radio />} label="Складной" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                </Grid>
+                                <Grid >
+                                    <FormControl component="fieldset">
+                                            <h5>Цена</h5>
+                                        <RadioGroup onChange={(e) => fetchProducts("price_lte", e.target.value)} arial-label="price" name="price1">
+                                            <FormControlLabel value="1000" control={<Radio />} label="1000" />
+                                            <FormControlLabel value="2500" control={<Radio />} label="2500" />
+                                            <FormControlLabel value="5000" control={<Radio />} label="5000" />
+                                            <FormControlLabel value="7000" control={<Radio />} label="7000" />
+                                            <FormControlLabel value="8500" control={<Radio />} label="8500" />
+                                            <FormControlLabel value="10000" control={<Radio />} label="10000" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                </Grid>
+                            </div>
+                            <div className={classes.buttonContainer}>
+                                <Button onClick={reset}>
+                                    Reset Filter
+                                </Button>
+                            </div>
+                        </Paper>
+                    </Grid>
+                </div>
             <h1 className={classes.title}>Каталог Байков</h1>
-            <Paper className={classes.paper}>
-                <ProductCard />
-            </Paper>
+            <div className={classes.wrapper}>
+                
+                <Paper className={classes.paper}>
+                    <ProductCard />
+                </Paper>
+            </div>
             <div  className={classes.paginationContainer}>
                 <Pagination count={paginationPages} page={page} onChange={handlePage} size="large"  />
             </div>
