@@ -1,19 +1,23 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { useEffect } from 'react';
 import { useProducts } from '../../Contexts/ProductContext';
 import { IconButton, Tab, Typography } from '@material-ui/core';
 import { useState } from 'react';
 import Header from '../Header/Header'
+import PurchaseForm from '../PurchaseForm/PurchaseForm';
 import DeleteIcon from '@material-ui/icons/Delete';
-console.log('asd')
 
 const useStyles = makeStyles({
   table: {
@@ -22,11 +26,15 @@ const useStyles = makeStyles({
   tableCellImg: {
     width: 50,
   },
+  button: {
+    marginTop: 11
+  }
 });
 
 export default function Cart() {
   const classes = useStyles();
   const [count, setCount] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
   const { cart, getCart, changeProductCount,deleteFromCart } = useProducts();
 
   useEffect(() => {
@@ -95,10 +103,18 @@ export default function Cart() {
               <TableCell align="right">
                 <Typography variant="h5">{cart.totalPrice}</Typography>
               </TableCell>
+              <Button variant="contained" color="primary" className={classes.button} onClick={() => setModalShow(true)}>
+                Купить
+              </Button>
             </TableRow>
+            
           </TableBody>
         </Table>
       </TableContainer>
+      <PurchaseForm 
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+      />
     </>
   );
 }
