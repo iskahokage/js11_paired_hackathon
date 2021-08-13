@@ -15,11 +15,16 @@ const useStyles = makeStyles(() => ({
     },
     paper:{
         maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "10px",
         display: "flex",
-        flexDirection: "column",
+        flexWrap: "wrap",
+        margin: "0 auto",
+        justifyContent: "space-evenly",
     },
+    paginationContainer:{
+        margin: '20px auto',
+        display: 'flex',
+        justifyContent: 'center'
+    }
   }));
 
 
@@ -45,18 +50,17 @@ const ProductList = () => {
     useEffect(()=>{
         getProducts()
       }, [])
-      function handleClick(id){
-        deleteProduct(id)
-      }
    
     return (
-        <>
+        <div>
             <h1 className={classes.title}>Каталог Байков</h1>
             <Paper className={classes.paper}>
                 <ProductCard />
             </Paper>
-            <Pagination count={paginationPages} page={page} onChange={handlePage} size="large" />
-        </>
+            <div  className={classes.paginationContainer}>
+                <Pagination count={paginationPages} page={page} onChange={handlePage} size="large"  />
+            </div>
+        </div>
     );
 };
 
