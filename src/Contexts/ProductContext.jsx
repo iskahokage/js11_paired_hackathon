@@ -35,6 +35,8 @@ const reducer = (state=INIT_STATE, action) =>{
             }
          case "GET_CART":
       return { ...state, cart: action.payload };
+      case "FILTER_PRODUCTS_BY_PRICE":
+        return{...state, products: action.payload}
         default:
             return state;
     }
@@ -160,6 +162,14 @@ const ProductContextProvider = ({children}) => {
           payload: cart,
         });
       };
+      async function filterProductsByPrice(price){
+        const {data} = await axios(JSON_API)
+        const filteredArr = data.filter(item => +item.price <= +price)
+        dispatch({
+            type: "FILTER_PRODUCTS_BY_PRICE",
+            payload: filteredArr
+        })
+    }
     return (
         <addProductContext.Provider
         value={{
@@ -177,6 +187,7 @@ const ProductContextProvider = ({children}) => {
             addProductToCart,
             deleteFromCart,
             changeProductCount,
+            filterProductsByPrice,
         }}
         >
             {children}
