@@ -8,8 +8,8 @@ import { addProductContext } from '../../Contexts/ProductContext';
 
 const Header = () => {
 	const history = useHistory()
-	const {userEmail, user} = useContext(authContext);
-	const {getProducts, products} = useContext(addProductContext)
+	const {userEmail} = useContext(authContext); 
+	const {getProducts} = useContext(addProductContext)
 	const [state, setState] = useState(false)
 	let checkStatus = JSON.parse(localStorage.getItem("user"))
 	
@@ -21,8 +21,8 @@ const Header = () => {
 	  };
     useEffect(() => {
         if (checkStatus) setState(true)
-    }, [userEmail])
-	console.log(userEmail)
+    }, [userEmail]) // eslint-disable-line react-hooks/exhaustive-deps
+	
     function logout1() {
         localStorage.setItem("user", JSON.stringify(0))
         setState(false)

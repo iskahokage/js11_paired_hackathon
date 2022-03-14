@@ -2,13 +2,11 @@ import React, { useContext, useState } from 'react'
 import { addProductContext } from '../../Contexts/ProductContext';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { useEffect } from 'react';
 import ProductList from '../Home/ProductList';
-import {Container, Grid, Paper} from '@material-ui/core';
+import {Container, Paper} from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import { Button } from 'react-bootstrap';
-import ProductCard from '../Home/ProductCard';
 
 const useStyles = makeStyles(()=>({
     title:{

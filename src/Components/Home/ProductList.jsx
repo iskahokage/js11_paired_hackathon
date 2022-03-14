@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { addProductContext } from '../../Contexts/ProductContext';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ProductCard from './ProductCard';
-import Header from '../Header/Header'
-import { FormControlLabel, Grid, FormControl, Radio, RadioGroup, FormLabel, Paper, Container } from '@material-ui/core';
+import { FormControlLabel, Grid, FormControl, Radio, RadioGroup, Paper } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import { Button } from 'react-bootstrap';
 
@@ -51,16 +50,11 @@ const useStyles = makeStyles(() => ({
 
 
 const ProductList = () => {
-    const {products, getProducts, deleteProduct, paginationPages,editProduct, filterProductsByPrice} = useContext(addProductContext)
+    const { getProducts, paginationPages} = useContext(addProductContext)
     const classes = useStyles();
     const history = useHistory();
     const [page, setPage] = useState(1);
     
-
-    function getPage(){
-        const search = new URLSearchParams(history.location.search)
-        return search.get('_page')
-    }
 
     const handlePage = (e, page) => {
         const search = new URLSearchParams(history.location.search)
@@ -71,8 +65,8 @@ const ProductList = () => {
     }
     useEffect(()=>{
         getProducts()
-      }, [])
-    useEffect(()=>{})
+      }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    useEffect(()=>{}) 
    
       function fetchProducts(params, value) {
         let search = new URLSearchParams(history.location.search)
@@ -86,11 +80,6 @@ const ProductList = () => {
         history.push('/catalog')
         getProducts(history)
     }
-
-    function filterByPrice(value) {
-        filterProductsByPrice(value)
-    }
-
     return (
         <div>
                 <div className={classes.filterContainer}>

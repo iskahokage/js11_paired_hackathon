@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../Contexts/AuthContext';
-import Header from '../Header/Header'
 import { Button } from 'react-bootstrap';
 import './Login.css'
 
@@ -10,7 +9,7 @@ const Registration = (props) => {
 
   useEffect(() => {
     getUsersData()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleInpChange = (e) => {
     let obj = {
@@ -22,7 +21,7 @@ const Registration = (props) => {
   }
 
   function handleClick() {
-    let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+    let regexp = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
     let regexp2 = new RegExp(/(?=.{8,})/)
     let result = regexp.test(newUser.login)
     let result2 = regexp2.test(newUser.password)

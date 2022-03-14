@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { createContext, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 import { JSON_API } from '../Helpers/Consts';
@@ -102,10 +102,10 @@ const ProductContextProvider = ({children}) => {
           let targetItem = JSON.parse(items.products[i].item.id);
           let targetItemPrice = JSON.parse(items.products[i].item.price);
           
-          if (targetItem == id) {
+          if (targetItem === id) {
               items.products.splice(i, 1);
           }
-          if (targetItemPrice == price){
+          if (targetItemPrice === price){
             items.totalPrice = items.totalPrice - price
           }
       }
@@ -131,7 +131,7 @@ const ProductContextProvider = ({children}) => {
         let  productToFind = cart.products.filter(
           (item) => item.item.id === product.id
         )
-        if(productToFind.length == 0){
+        if(productToFind.length === 0){
           cart.products.push(newProduct)
         }
     

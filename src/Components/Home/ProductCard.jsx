@@ -8,13 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from 'react-bootstrap/esm/Button';
-import Typography from '@material-ui/core/Typography';
 import PurchaseForm from '../PurchaseForm/PurchaseForm';
 
 const useStyles = makeStyles(() => ({
@@ -63,8 +57,8 @@ const useStyles = makeStyles(() => ({
 
 
 const ProductCard = () => {
-    const {products, getProducts, deleteProduct, editProduct, addProductToCart, cart} = useContext(addProductContext)
-    const {userEmail, user} = useContext(authContext);
+    const {products, getProducts, deleteProduct, editProduct, addProductToCart} = useContext(addProductContext)
+    const {userEmail} = useContext(authContext);
     const [state, setState] = useState(false)
     const [modalShow, setModalShow] = useState(false);
     const classes = useStyles();
@@ -72,18 +66,14 @@ const ProductCard = () => {
     
     useEffect(() => {
       if (checkStatus) setState(true)
-  }, [userEmail])
+  }, [userEmail]) // eslint-disable-line react-hooks/exhaustive-deps
     
     useEffect(()=>{
         getProducts()
-      }, [])
+      }, [])// eslint-disable-line react-hooks/exhaustive-deps
       function handleClick(id){
         deleteProduct(id)
       }
-      const checkItemInCart = (id) => {
-        const foundItem = cart.products.find((product) => product.item.id === id);
-        return foundItem ? 'secondary' : 'default';
-      };
 
 
 

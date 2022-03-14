@@ -1,8 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -13,9 +10,8 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { useEffect } from 'react';
 import { useProducts } from '../../Contexts/ProductContext';
-import { IconButton, Tab, Typography } from '@material-ui/core';
+import { IconButton, Typography } from '@material-ui/core';
 import { useState } from 'react';
-import Header from '../Header/Header'
 import PurchaseForm from '../PurchaseForm/PurchaseForm';
 import DeleteIcon from '@material-ui/icons/Delete';
 
@@ -36,13 +32,13 @@ const useStyles = makeStyles({
 
 export default function Cart() {
   const classes = useStyles();
-  const [count, setCount] = useState([]);
+  const [count, setCount] = useState([]); // eslint-disable-line no-unused-vars
   const [modalShow, setModalShow] = useState(false);
   const { cart, getCart, changeProductCount,deleteFromCart } = useProducts();
 
   useEffect(() => {
     getCart();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setCount();

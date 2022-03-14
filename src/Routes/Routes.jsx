@@ -27,12 +27,12 @@ const Routes = () => {
                         <Route exact path="/catalog" component={ProductList}/>           
                         <Route exact path="/registration" component={Registration} />
                         <Route exact path="/auth" component={Authorization} />
-                        <Route exact path="/payment" component={Payment} />53
+                        <Route exact path="/payment" component={Payment} />
                     </Switch>
                     <Footer/>
                 </ProductContextProvider>
             </AuthContextProvider>
-        53</BrowserRouter>
+        </BrowserRouter>
     );
 };
 
